@@ -1,0 +1,86 @@
+@page {
+    size: A4 portrait;
+    margin: 10mm;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 2px;
+    padding: 2px;
+    height: 100vh;
+}
+
+.voucher {
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #000;
+}
+
+.voucher h1 {
+    font-size: 12px;
+    margin: 3px 0;
+}
+
+.code {
+    background-color: #333;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.price {
+    font-size: 10px;
+    margin: 3px 0;
+}
+
+.details div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 8px;
+}
+
+.result-box {
+    grid-column: 1 / span 4;
+    background: #f5f5f5;
+    border: 2px solid #333;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    margin: 5px;
+    white-space: pre-wrap;
+}
+
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        height: auto;
+    }
+
+    .voucher {
+        background-color: white !important;
+        page-break-inside: avoid;
+    }
+
+    .code {
+        background-color: #333 !important;
+        color: white !important;
+    }
+
+    .result-box {
+        display: none !important;
+    }
+}
