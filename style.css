@@ -56,16 +56,16 @@ h1 {
 .voucher-grid {
   display: grid;
   grid-template-columns: repeat(var(--cols), 1fr);
-  grid-template-rows: repeat(var(--rows), 1fr);
-  gap: 0; /* tanpa jarak antar voucher */
+  gap: 0;
   width: 100%;
-  height: 100vh;
+  /* HILANGKAN height:100vh */
+  /* HILANGKAN grid-template-rows */
 }
 
 /* === Voucher design === */
 .voucher {
   background: #ffffff;
-  border: 1px solid #c7d5ea;
+  border: 1px solid #000000; /* garis hitam */
   padding: 6px;
   display: flex;
   flex-direction: column;
@@ -123,6 +123,7 @@ h1 {
     display: none !important;
   }
 
+
   body {
     background: white;
     padding: 0;
@@ -134,5 +135,6 @@ h1 {
 
   .voucher {
     page-break-inside: avoid;
+    border: 1px solid #000000 !important; /* pastikan tetap hitam saat print */
   }
 }
