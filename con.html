@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Converter Angka ke Format Kutip</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background: #f4f4f4;
+    }
+    textarea {
+        width: 100%;
+        height: 200px;
+        padding: 10px;
+        font-size: 15px;
+        resize: vertical;
+    }
+    pre {
+        margin-top: 15px;
+        padding: 10px;
+        background: #111;
+        color: #0f0;
+        white-space: pre-wrap;
+        border-radius: 5px;
+        font-family: monospace;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    button {
+        margin-top: 10px;
+        padding: 10px 15px;
+        cursor: pointer;
+        background: #007bff;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+</style>
+</head>
+<body>
+
+<h2>Converter Angka ke Format Kutip</h2>
+<p>Tempel daftar angka, hasil muncul otomatis.</p>
+
+<textarea id="input" placeholder="Tempel angka di sini..."></textarea>
+
+<pre id="output"></pre>
+
+<!-- textarea hidden khusus untuk copy -->
+<textarea id="hiddenCopy" style="opacity:0;position:absolute;left:-9999px;"></textarea>
+
+<button onclick="copyAll()">Copy Semua</button>
+
+<script>
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+    const hiddenCopy = document.getElementById("hiddenCopy");
+
+    input.addEventListener("input", () => {
+        const lines = input.value
+            .split(/\r?\n/)
+            .map(x => x.trim())
+            .filter(x => x.length > 0);
+
+        const formatted = lines.map(x => `"${x}"`).join(", ");
+
+        output.textContent = formatted;
+
+        // siapkan hidden textarea untuk copy
+        hiddenCopy.value = formatted;
+    });
+
+    function copyAll() {
+        hiddenCopy.select();
+        hiddenCopy.setSelectionRange(0, hiddenCopy.value.length); // untuk Android
+
+        try {
+            const ok = document.execCommand("copy");
+            if (ok) {
+                alert("Berhasil disalin!");
+            } else {
+                throw new Error("execCommand gagal");
+            }
+        } catch (e) {
+            navigator.clipboard.writeText(hiddenCopy.value).then(() => {
+                alert("Berhasil disalin!");
+            }).catch(() => {
+                alert("Gagal copy. Silakan blok teks manual.");
+            });
+        }
+    }
+</script>
+
+</body>
+</html>
