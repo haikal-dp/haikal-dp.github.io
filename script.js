@@ -50,7 +50,7 @@ function renderVoucher(codes) {
       </div>
       <div class="v-cs">CS : 085173229118</div>
       <div class="v-cs">Dicetak Pada: ${formattedDate}</div>
-            <div class="v-cs">Jika Segel Rusak Tidak boleh di tukar</div>
+            
     `;
     voucherContainer.appendChild(div);
   });
