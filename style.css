@@ -17,13 +17,14 @@ body {
   background: #f3f6fb;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
+  color: #000000; /* semua teks default hitam */
 }
 
 h1 {
   text-align: center;
   margin: 0 0 8px 0;
   font-size: 18px;
-  color: #0b4f8a;
+  color: #000000;
   font-weight: 600;
 }
 
@@ -36,7 +37,7 @@ h1 {
 }
 
 .button-container button {
-  background: #0770d6;
+  background: #000000; /* tombol hitam */
   color: white;
   border: none;
   padding: 7px 12px;
@@ -58,14 +59,12 @@ h1 {
   grid-template-columns: repeat(var(--cols), 1fr);
   gap: 0;
   width: 100%;
-  /* HILANGKAN height:100vh */
-  /* HILANGKAN grid-template-rows */
 }
 
 /* === Voucher design === */
 .voucher {
   background: #ffffff;
-  border: 1px solid #000000; /* garis hitam */
+  border: 1px solid #000000;
   padding: 6px;
   display: flex;
   flex-direction: column;
@@ -74,10 +73,11 @@ h1 {
   text-align: center;
   font-size: 10px;
   overflow: hidden;
+  color: #000000;
 }
 
 .v-head {
-  color: #055aa6;
+  color: #000000;
   font-weight: 700;
   font-size: 10px;
 }
@@ -86,13 +86,13 @@ h1 {
   font-weight: 800;
   font-size: 14px;
   letter-spacing: 1px;
-  color: #0b0b0b;
+  color: #000000;
   margin: 2px 0;
 }
 
 .v-meta {
   font-size: 9px;
-  color: #333;
+  color: #000000;
   line-height: 1.05;
   width: 100%;
   display: flex;
@@ -107,7 +107,7 @@ h1 {
 /* === Teks CS === */
 .v-cs {
   font-size: 8px;
-  color: #444;
+  color: #000000;
   margin-top: 3px;
   font-weight: 500;
 }
@@ -123,10 +123,10 @@ h1 {
     display: none !important;
   }
 
-
   body {
     background: white;
     padding: 0;
+    color: #000000;
   }
 
   .voucher-grid {
@@ -135,6 +135,7 @@ h1 {
 
   .voucher {
     page-break-inside: avoid;
-    border: 1px solid #000000 !important; /* pastikan tetap hitam saat print */
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
   }
 }
