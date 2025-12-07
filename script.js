@@ -44,13 +44,13 @@ function renderVoucher(codes) {
       <div class="v-head">ERVITA.NET</div>
       <div class="v-code">${escapeHtml(String(code))}</div>
       <div class="v-meta">
-        <div>Rp 3.000</div>
-        <div>10 Jam</div>
+        <div>Rp 50.000</div>
+        <div>30 Hari</div>
         <div><b>UNLIMITED</b></div>
       </div>
       <div class="v-cs">CS : 085173229118</div>
       <div class="v-cs">Dicetak Pada: ${formattedDate}</div>
-            
+            <div class="v-cs">Jika Segel Rusak Tidak boleh di tukar</div>
     `;
     voucherContainer.appendChild(div);
   });
