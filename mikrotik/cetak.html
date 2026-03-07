@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Voucher Hotspot ERVITA.NET — Generator</title>
+  <style>
+    :root {
+      --rows: 11;
+      --cols: 4;
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 6mm;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f3f6fb;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      color: #000000;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0 0 12px 0;
+      font-size: 18px;
+      color: #000000;
+      font-weight: 600;
+    }
+
+    /* === Input Section === */
+    .input-section {
+      background: white;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .input-group {
+      margin-bottom: 12px;
+    }
+
+    .input-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .input-group textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 13px;
+      resize: vertical;
+    }
+
+    .input-group textarea:focus {
+      outline: none;
+      border-color: #000;
+    }
+
+    .input-hint {
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: #000000;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      opacity: .9;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #5a6268;
+    }
+
+    .btn-success {
+      background: #28a745;
+      color: white;
+    }
+
+    .btn-success:hover {
+      background: #218838;
+    }
+
+    .voucher-count {
+      font-size: 13px;
+      color: #555;
+      margin-left: auto;
+    }
+
+    /* === GRID 11x4 === */
+    .voucher-grid {
+      display: grid;
+      grid-template-columns: repeat(var(--cols), 1fr);
+      gap: 0;
+      width: 100%;
+    }
+
+    /* === Voucher design === */
+    .voucher {
+      background: #ffffff;
+      border: 1px solid #000000;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      font-size: 10px;
+      overflow: hidden;
+      color: #000000;
+      min-height: 60px;
+    }
+
+    .v-head {
+      color: #000000;
+      font-weight: 700;
+      font-size: 10px;
+    }
+
+    .v-code {
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: #000000;
+      margin: 2px 0;
+    }
+
+    .v-meta {
+      font-size: 9px;
+      color: #000000;
+      line-height: 1.05;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .v-meta div {
+      flex: 1;
+      text-align: center;
+    }
+
+    .v-cs {
+      font-size: 8px;
+      color: #000000;
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    .voucher.empty {
+      background: transparent;
+      border: none;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px;
+      color: #888;
+      font-size: 14px;
+      grid-column: 1 / -1;
+    }
+
+    /* === PRINT MODE === */
+    @media print {
+      h1, .input-section {
+        display: none !important;
+      }
+
+      body {
+        background: white;
+        padding: 0;
+        color: #000000;
+      }
+
+      .voucher-grid {
+        height: auto;
+      }
+
+      .voucher {
+        page-break-inside: avoid;
+        border: 1px solid #000000 !important;
+        color: #000000 !important;
+      }
+
+      .empty-state {
+        display: none !important;
+      }
+    }
+  </style>
+<base target="_blank">
+</head>
+<body>
+  <h1>Voucher Hotspot ERVITA.NET — Generator Voucher</h1>
+
+  <!-- Input Section -->
+  <div class="input-section">
+    <div class="input-group">
+      <label for="voucherCodes">Kode Voucher</label>
+      <textarea 
+        id="voucherCodes" 
+        placeholder="Masukkan kode voucher di sini...&#10;Satu kode per baris&#10;Contoh:&#10;ABC123&#10;DEF456&#10;GHI789"
+      ></textarea>
+      <div class="input-hint">Masukkan satu kode voucher per baris. Maksimal 44 voucher per halaman.</div>
+    </div>
+    
+    <div class="button-row">
+      <button class="btn btn-primary" onclick="generateVouchers()">Generate Voucher</button>
+      <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+      <button class="btn btn-success" onclick="window.print()">Print Voucher</button>
+      <span class="voucher-count" id="voucherCount">0 voucher</span>
+    </div>
+  </div>
+
+  <!-- Voucher Grid -->
+  <div id="voucherContainer" class="voucher-grid">
+    <div class="empty-state">Belum ada voucher. Masukkan kode voucher di atas dan klik "Generate Voucher".</div>
+  </div>
+
+  <script>
+    const voucherContainer = document.getElementById('voucherContainer');
+    const voucherCodesInput = document.getElementById('voucherCodes');
+    const voucherCountLabel = document.getElementById('voucherCount');
+
+    function generateVouchers() {
+      const rawInput = voucherCodesInput.value.trim();
+      
+      if (!rawInput) {
+        alert('Silakan masukkan kode voucher terlebih dahulu!');
+        return;
+      }
+
+      // Parse kode voucher (satu per baris, hapus baris kosong)
+      const codes = rawInput
+        .split('\n')
+        .map(code => code.trim())
+        .filter(code => code.length > 0);
+
+      if (codes.length === 0) {
+        alert('Tidak ada kode voucher yang valid!');
+        return;
+      }
+
+      renderVoucher(codes);
+    }
+
+    function renderVoucher(codes) {
+      voucherContainer.innerHTML = '';
+
+      // Ambil tanggal hari ini
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const year = today.getFullYear();
+      const formattedDate = `${day}-${month}-${year}`;
+
+      // Update counter
+      voucherCountLabel.textContent = codes.length + ' voucher';
+
+      codes.forEach(code => {
+        const div = document.createElement('div');
+        div.className = 'voucher';
+        div.innerHTML = `
+          <div class="v-head">ERVITA.NET</div>
+          <div class="v-code">${escapeHtml(String(code))}</div>
+          <div class="v-meta">
+            <div>Rp 3.000</div>
+            <div>10 jam</div>
+            <div><b>UNLIMITED</b></div>
+          </div>
+          <div class="v-cs">CS : 081294701977</div>
+          <div class="v-cs">Dicetak Pada: ${formattedDate}</div>
+          <div class="v-cs">Jika Segel Rusak Tidak boleh di tukar</div>
+        `;
+        voucherContainer.appendChild(div);
+      });
+
+      // Isi kosong biar tetap pas 11x4 (44 slot)
+      const totalSlots = 44;
+      for (let i = codes.length; i < totalSlots; i++) {
+        const emptyDiv = document.createElement('div');
+        emptyDiv.className = 'voucher empty';
+        voucherContainer.appendChild(emptyDiv);
+      }
+    }
+
+    function clearAll() {
+      voucherCodesInput.value = '';
+      voucherContainer.innerHTML = '<div class="empty-state">Belum ada voucher. Masukkan kode voucher di atas dan klik "Generate Voucher".</div>';
+      voucherCountLabel.textContent = '0 voucher';
+    }
+
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    }
+  </script>
+</body>
+</html>
