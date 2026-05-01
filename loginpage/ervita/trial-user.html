@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="ERVITA.NET">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="msapplication-navbutton-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" href="img/favicon.png">
+    <title>Login Gratis - ERVITA.NET</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/ervita.css">
+    <style>
+        .countdown-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(var(--primary) var(--progress, 0%), var(--gray-200) 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem auto;
+            position: relative;
+        }
+        .countdown-circle::before {
+            content: '';
+            position: absolute;
+            width: 65px;
+            height: 65px;
+            background: white;
+            border-radius: 50%;
+        }
+        .countdown-number {
+            position: relative;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h1>ERVITA.NET</h1>
+            </div>
+            <a href="login.html" class="notification-btn" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-times"></i>
+            </a>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="card animate-fadeIn" style="text-align: center;">
+                <div class="result-icon" style="background: var(--success-light); color: var(--success); width: 80px; height: 80px; margin-bottom: 1rem;">
+                    <i class="fas fa-gift" style="font-size: 2.5rem;"></i>
+                </div>
+                
+                <h3 style="margin-bottom: 0.5rem;">Login Gratis</h3>
+                <p style="color: var(--gray-600); margin-bottom: 1.5rem;">Nikmati internet gratis selama 5 menit</p>
+
+                <!-- Countdown Section -->
+                <div id="countdown-section">
+                    <p style="margin-bottom: 1rem;">Harap tunggu...</p>
+                    <div class="countdown-circle" id="countdownCircle">
+                        <span class="countdown-number" id="countdownNumber">10</span>
+                    </div>
+                    <p style="font-size: 0.875rem; color: var(--gray-500);">Mohon tunggu sebentar</p>
+                </div>
+
+                <!-- Trial Button Section -->
+                <div id="trial-button-section" style="display: none;">
+                    <span class="hilang">$(if trial == 'yes')</span>
+                    <div class="alert alert-success" style="margin-bottom: 1rem;">
+                        <i class="fas fa-check-circle"></i>
+                        <div>Selamat! Anda mendapatkan akses gratis 5 menit</div>
+                    </div>
+                    <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class="btn btn-primary btn-block">
+                        <i class="fas fa-wifi"></i> Mulai Internet Gratis
+                    </a>
+                    <span class="hilang">$(else)</span>
+                    <div class="alert alert-warning" style="margin-bottom: 1rem;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div>Maaf, trial hari ini sudah habis</div>
+                    </div>
+                    <a href="voucher.html" class="btn btn-primary btn-block">
+                        <i class="fas fa-shopping-cart"></i> Beli Voucher
+                    </a>
+                    <span class="hilang">$(endif)</span>
+                </div>
+
+                <!-- Random Banner -->
+                <div id="banner-load" style="margin-top: 1.5rem;"></div>
+            </div>
+
+            <!-- Info Card -->
+            <div class="card animate-fadeInUp" style="animation-delay: 0.2s;">
+                <div class="alert alert-info" style="margin-bottom: 0;">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>Catatan:</strong> Akses gratis terbatas 5 menit per hari. Untuk akses tanpa batas, silakan <a href="voucher.html" style="color: var(--primary);">beli voucher</a>.
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 ERVITA.NET - Internet Cepat & Stabil</p>
+        </footer>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="login.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="aktivasi.html" class="nav-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Aktivasi</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>About</span>
+        </a>
+    </nav>
+
+    <script>
+        // Random banner
+        const images = ['iklan1.jpg', 'iklan2.jpg'];
+        const randomImage = images[Math.floor(Math.random() * images.length)];
+        const bannerHtml = `<img src="img/${randomImage}" alt="Promo" style="width: 100%; border-radius: 12px;" onerror="this.style.display='none'">`;
+        document.getElementById('banner-load').innerHTML = bannerHtml;
+
+        // Countdown
+        let seconds = 10;
+        const countdownNumber = document.getElementById('countdownNumber');
+        const countdownCircle = document.getElementById('countdownCircle');
+        const countdownSection = document.getElementById('countdown-section');
+        const trialButtonSection = document.getElementById('trial-button-section');
+
+        function updateCountdown() {
+            countdownNumber.textContent = seconds;
+            const progress = ((10 - seconds) / 10) * 100;
+            countdownCircle.style.setProperty('--progress', `${progress}%`);
+            
+            if (seconds <= 0) {
+                countdownSection.style.display = 'none';
+                trialButtonSection.style.display = 'block';
+                trialButtonSection.classList.add('animate-fadeIn');
+            } else {
+                seconds--;
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+
+        updateCountdown();
+    </script>
+</body>
+</html>

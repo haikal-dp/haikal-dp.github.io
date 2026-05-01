@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="2; url=$(link-redirect)">
+    <meta name="Author" content="ERVITA.NET">
+    <meta name="theme-color" content="#10b981">
+    <meta name="msapplication-navbutton-color" content="#10b981">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#10b981">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" href="img/favicon.png">
+    <title>Login Berhasil - ERVITA.NET</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/ervita.css">
+    <script>
+        function startClock() {
+            $(if popup == 'true')
+            open('$(link-status)', 'hotspot_status', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=350,height=500');
+            $(endif)
+            location.href = '$(link-status)';
+        }
+    </script>
+</head>
+<body onload="startClock()">
+    <div class="result-page">
+        <div class="result-card animate-scaleIn">
+            <div class="spinner"></div>
+            <h2>Login Berhasil!</h2>
+            <p>Selamat! Anda berhasil terhubung ke jaringan ERVITA.NET.<br><br>Anda akan diarahkan ke halaman status dalam beberapa detik...</p>
+            
+            <a href="status.html" class="btn btn-primary btn-block" style="margin-top: 1rem;">
+                <i class="fas fa-arrow-right"></i> Lanjutkan Sekarang
+            </a>
+        </div>
+        
+        <footer class="footer" style="margin-top: 2rem;">
+            <p>&copy; 2026 ERVITA.NET - Internet Cepat & Stabil</p>
+        </footer>
+    </div>
+</body>
+</html>
