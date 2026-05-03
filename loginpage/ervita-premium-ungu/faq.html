@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="ERVITA.NET">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="msapplication-navbutton-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" href="img/favicon.png">
+    <title>Pusat Bantuan - ERVITA.NET</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/ervita.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h1>ERVITA.NET</h1>
+            </div>
+            <a href="login.html" class="notification-btn" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-times"></i>
+            </a>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-title">
+                <h2><i class="fas fa-question-circle" style="margin-right: 8px;"></i>Pusat Bantuan</h2>
+                <p>Temukan jawaban untuk pertanyaan umum</p>
+            </div>
+
+            <!-- Search -->
+            <div class="search-container animate-fadeIn">
+                <i class="fas fa-search"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="Cari pertanyaan...">
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="accordion animate-fadeInUp" id="faqAccordion">
+                <!-- FAQ 1 -->
+                <div class="accordion-item" data-question="cara terhubung wifi hotspot login">
+                    <button class="accordion-button">
+                        <span>Cara Terhubung ke WiFi Hotspot</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <ol style="padding-left: 1.2rem; line-height: 2;">
+                                <li>Siapkan Kode Voucher yang Anda miliki. Jika belum punya, silakan <a href="voucher.html" style="color: var(--primary);">beli voucher disini</a></li>
+                                <li>Pastikan area Anda tercover dengan <strong>signal WiFi</strong> kami</li>
+                                <li>Aktifkan wireless pada <strong>smartphone atau laptop</strong> Anda dan koneksikan dengan <strong>SSID WiFi</strong> kami</li>
+                                <li>Tunggu beberapa saat sampai pop-up notifikasi untuk login muncul</li>
+                                <li>Setelah Anda berhasil masuk ke <strong>halaman login</strong>, silakan aktivasi <strong>KODE VOUCHER</strong> dan klik <strong>Login</strong></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="accordion-item" data-question="notifikasi login tidak muncul manual">
+                    <button class="accordion-button">
+                        <span>Notifikasi untuk Login Tidak Muncul</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p style="margin-bottom: 1rem;">Jika notifikasi tidak muncul padahal perangkat sudah tersambung ke hotspot, lakukan cara manual berikut:</p>
+                            <ol style="padding-left: 1.2rem; line-height: 2;">
+                                <li>Silakan buka aplikasi browser <strong><em>(Chrome, Mozilla, dll)</em></strong> pada smartphone atau laptop Anda</li>
+                                <li>Ketikkan URL pada address bar browser: <strong>ervita.net</strong> lalu tekan enter</li>
+                                <li>Tunggu hingga proses loading selesai menampilkan halaman login</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="accordion-item" data-question="cek masa aktif voucher sisa waktu">
+                    <button class="accordion-button">
+                        <span>Cara Cek Masa Aktif Voucher</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <ol style="padding-left: 1.2rem; line-height: 2;">
+                                <li>Gunakan Browser (Google Chrome, UC Browser, atau lainnya)</li>
+                                <li>Ketikkan pada address bar: <a href="http://ervita.net" style="color: var(--primary);">ervita.net</a></li>
+                                <li>Tunggu hingga loading selesai menampilkan halaman</li>
+                                <li>Lihat informasi sisa waktu pada halaman status</li>
+                                <li>Contoh: <strong>16h28m</strong> berarti 16 jam 28 menit</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="accordion-item" data-question="voucher perangkat lain pindah logout">
+                    <button class="accordion-button">
+                        <span>Apakah Kode Voucher Bisa Digunakan di Perangkat Lain?</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p style="margin-bottom: 1rem;"><strong>Ya</strong>, voucher bisa digunakan di perangkat lain dengan catatan:</p>
+                            <ul style="padding-left: 1.2rem; line-height: 2;">
+                                <li>Anda harus <strong>logout terlebih dahulu</strong> dari perangkat sebelumnya</li>
+                                <li>Sistem kami menggunakan alamat <strong>IP ADDRESS</strong></li>
+                                <li>Hanya <strong>1 IP ADDRESS</strong> untuk satu <strong>KODE VOUCHER</strong></li>
+                                <li>Anda tidak dapat menggunakan 1 voucher untuk 2 perangkat secara bersamaan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="accordion-item" data-question="tidak bisa internet login error">
+                    <button class="accordion-button">
+                        <span>Sudah Login Tapi Tidak Bisa Internet</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p style="margin-bottom: 1rem;">Jika mengalami masalah ini, silakan:</p>
+                            <ol style="padding-left: 1.2rem; line-height: 2;">
+                                <li>Hubungi admin melalui WhatsApp</li>
+                                <li>Laporkan kendala yang Anda alami</li>
+                                <li>Kami akan melakukan pengecekan</li>
+                                <li>Jika masalah dari server, akan kami berikan voucher pengganti</li>
+                            </ol>
+                            <a href="https://wa.me/6285172207018" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">
+                                <i class="fab fa-whatsapp"></i> Hubungi Support
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="accordion-item" data-question="lupa voucher hilang rusak">
+                    <button class="accordion-button">
+                        <span>Voucher Hilang atau Rusak</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Jika voucher Anda hilang atau rusak, segera hubungi kami dengan menyertakan:</p>
+                            <ul style="padding-left: 1.2rem; line-height: 2; margin-top: 0.5rem;">
+                                <li>Bukti pembelian</li>
+                                <li>Kode voucher (jika masih terbaca sebagian)</li>
+                                <li>Waktu pembelian</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Card -->
+            <div class="card animate-fadeInUp" style="margin-top: 1.5rem;">
+                <div style="text-align: center;">
+                    <i class="fas fa-headset" style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;"></i>
+                    <h4 style="margin-bottom: 0.5rem;">Masih Butuh Bantuan?</h4>
+                    <p style="color: var(--gray-600); font-size: 0.875rem; margin-bottom: 1rem;">Tim support kami siap membantu Anda</p>
+                    <a href="https://wa.me/6285172207018" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i> Hubungi Kami
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 ERVITA.NET - Internet Cepat & Stabil</p>
+        </footer>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="login.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="aktivasi.html" class="nav-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Aktivasi</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>About</span>
+        </a>
+    </nav>
+
+    <script>
+        // Accordion functionality
+        const accordionButtons = document.querySelectorAll('.accordion-button');
+        
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const isActive = this.classList.contains('active');
+                
+                // Close all
+                accordionButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.nextElementSibling.classList.remove('active');
+                    btn.nextElementSibling.style.maxHeight = null;
+                });
+                
+                // Open clicked if wasn't active
+                if (!isActive) {
+                    this.classList.add('active');
+                    content.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            
+            accordionItems.forEach(item => {
+                const question = item.getAttribute('data-question');
+                const button = item.querySelector('.accordion-button');
+                const content = item.querySelector('.accordion-body');
+                const text = (button.textContent + ' ' + content.textContent).toLowerCase();
+                
+                if (query === '' || text.includes(query) || question.includes(query)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

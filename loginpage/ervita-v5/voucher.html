@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="msapplication-navbutton-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Daftar Paket - ERVITA.NET</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%90%3C/text%3E%3C/svg%3E">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        .voucher-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+        .voucher-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: var(--space-4);
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            transition: all var(--transition);
+        }
+        .voucher-item:hover {
+            border-color: var(--primary);
+            transform: translateX(4px);
+        }
+        .voucher-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-red);
+            flex-shrink: 0;
+        }
+        .voucher-info {
+            flex: 1;
+        }
+        .voucher-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-1);
+        }
+        .voucher-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+        .voucher-price {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .voucher-btn {
+            padding: var(--space-2) var(--space-4);
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        .voucher-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-glow);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                        <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                        <line x1="12" y1="20" x2="12.01" y2="20"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>ERVITA.NET</h1>
+                    <span>Daftar Paket Voucher</span>
+                </div>
+            </div>
+            <a href="login.html" class="icon-btn" style="text-decoration:none;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </a>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <div class="card animate-fadeIn">
+                <div class="card-header" style="text-align:left;">
+                    <h2>Paket Voucher</h2>
+                    <p>Pilih paket yang sesuai dengan kebutuhan Anda</p>
+                </div>
+                
+                <div class="voucher-list">
+                    <div class="voucher-item">
+                        <div class="voucher-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="6" width="20" height="12" rx="2"/>
+                                <path d="M12 6v12"/>
+                                <path d="M6 10h.01"/>
+                                <path d="M6 14h.01"/>
+                            </svg>
+                        </div>
+                        <div class="voucher-info">
+                            <h4>Voucher 10 Jam</h4>
+                            <p>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                Masa aktif 10 jam
+                            </p>
+                        </div>
+                        <div class="voucher-price">Rp 3.000</div>
+                        <button class="voucher-btn" onclick="showPopup({title:'Pembelian Voucher',message:'Silakan hubungi kami melalui WhatsApp untuk melakukan pembelian voucher.',icon:'whatsapp',confirmText:'Chat WhatsApp',onConfirm:function(){window.open('https://wa.me/6285172207018','_blank');}})">Beli</button>
+                    </div>
+                    
+                    <div class="voucher-item">
+                        <div class="voucher-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="6" width="20" height="12" rx="2"/>
+                                <path d="M12 6v12"/>
+                                <path d="M6 10h.01"/>
+                                <path d="M6 14h.01"/>
+                            </svg>
+                        </div>
+                        <div class="voucher-info">
+                            <h4>Voucher 2 Hari</h4>
+                            <p>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                Masa aktif 2 hari
+                            </p>
+                        </div>
+                        <div class="voucher-price">Rp 6.000</div>
+                        <button class="voucher-btn" onclick="showPopup({title:'Pembelian Voucher',message:'Silakan hubungi kami melalui WhatsApp untuk melakukan pembelian voucher.',icon:'whatsapp',confirmText:'Chat WhatsApp',onConfirm:function(){window.open('https://wa.me/6285172207018','_blank');}})">Beli</button>
+                    </div>
+                    
+                    <div class="voucher-item">
+                        <div class="voucher-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="6" width="20" height="12" rx="2"/>
+                                <path d="M12 6v12"/>
+                                <path d="M6 10h.01"/>
+                                <path d="M6 14h.01"/>
+                            </svg>
+                        </div>
+                        <div class="voucher-info">
+                            <h4>Voucher 7 Hari</h4>
+                            <p>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                Masa aktif 7 hari
+                            </p>
+                        </div>
+                        <div class="voucher-price">Rp 20.000</div>
+                        <button class="voucher-btn" onclick="showPopup({title:'Pembelian Voucher',message:'Silakan hubungi kami melalui WhatsApp untuk melakukan pembelian voucher.',icon:'whatsapp',confirmText:'Chat WhatsApp',onConfirm:function(){window.open('https://wa.me/6285172207018','_blank');}})">Beli</button>
+                    </div>
+                    
+                    <div class="voucher-item">
+                        <div class="voucher-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="6" width="20" height="12" rx="2"/>
+                                <path d="M12 6v12"/>
+                                <path d="M6 10h.01"/>
+                                <path d="M6 14h.01"/>
+                            </svg>
+                        </div>
+                        <div class="voucher-info">
+                            <h4>Voucher 30 Hari</h4>
+                            <p>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                Masa aktif 30 hari
+                            </p>
+                        </div>
+                        <div class="voucher-price">Rp 50.000</div>
+                        <button class="voucher-btn" onclick="showPopup({title:'Pembelian Voucher',message:'Silakan hubungi kami melalui WhatsApp untuk melakukan pembelian voucher.',icon:'whatsapp',confirmText:'Chat WhatsApp',onConfirm:function(){window.open('https://wa.me/6285172207018','_blank');}})">Beli</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Info Card -->
+            <div class="card animate-fadeInUp" style="animation-delay:0.1s;">
+                <div class="alert alert-info" style="margin-bottom:0;">
+                    <svg class="alert-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                    <div class="alert-content">
+                        <strong>Cara Pembelian:</strong> Klik tombol "Beli" dan hubungi kami via WhatsApp untuk melakukan pemesanan voucher.
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 ERVITA.NET - Internet Cepat & Stabil</p>
+        </footer>
+    </div>
+    
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popup-overlay"></div>
+    
+    <!-- Scripts -->
+    <script src="js/setting.js"></script>
+    <script src="js/popup.js"></script>
+    
+</body>
+</html>

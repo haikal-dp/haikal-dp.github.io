@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta http-equiv="refresh" content="2; url=$(link-orig)">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>EVRVITA.NET - Advertisement</title>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+        var popup = '';
+        function openOrig() {
+            if (window.focus) popup.focus();
+            location.href = unescape('$(link-orig-esc)');
+        }
+        function openAd() {
+            location.href = unescape('$(link-redirect-esc)');
+        }
+        function openAdvert() {
+            if (window.name != 'hotspot_advert') {
+                popup = open('$(link-redirect)', 'hotspot_advert', '');
+                setTimeout("openOrig()", 1000);
+                return;
+            }
+            setTimeout("openAd()", 1000);
+        }
+    </script>
+</head>
+<body onLoad="openAdvert()">
+    <div class="container">
+        <div class="main-card">
+            <div class="header">
+                <img src="img/logo.png" alt="EVRVITA.NET" class="logo" />
+                <div class="brand-title">EVRVITA<span>.NET</span></div>
+                <div class="brand-subtitle">Advertisement</div>
+            </div>
+            <div style="padding: 0 24px 24px; text-align:center">
+                <p class="info-text" style="margin-bottom:16px">
+                    Jika tidak berpindah, buka <a href="$(link-redirect)" target="hotspot_advert" style="color:var(--primary);font-weight:600">advertisement</a> secara manual.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-brand">ERVITA.NET</div>
+            <div class="footer-info">Pasar Rau<br/><a href="https://wa.me/6285172207018">WhatsApp: 085172207018</a></div>
+        </div>
+    </div>
+</body>
+</html>

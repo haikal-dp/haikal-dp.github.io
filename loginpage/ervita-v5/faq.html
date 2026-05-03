@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="msapplication-navbutton-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Pusat Bantuan - ERVITA.NET</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%90%3C/text%3E%3C/svg%3E">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        .faq-search {
+            position: relative;
+            margin-bottom: var(--space-4);
+        }
+        .faq-search svg {
+            position: absolute;
+            left: var(--space-4);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+        .faq-search input {
+            width: 100%;
+            padding: var(--space-3) var(--space-4) var(--space-3) 2.75rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            outline: none;
+        }
+        .faq-search input:focus {
+            border-color: var(--primary);
+        }
+        .faq-search input::placeholder {
+            color: var(--text-placeholder);
+        }
+        
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+        .accordion-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .accordion-header {
+            width: 100%;
+            padding: var(--space-4);
+            background: transparent;
+            border: none;
+            text-align: left;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background var(--transition);
+        }
+        .accordion-header:hover {
+            background: var(--bg-hover);
+        }
+        .accordion-header svg {
+            transition: transform var(--transition);
+            color: var(--text-muted);
+        }
+        .accordion-item.active .accordion-header svg {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition);
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+        .accordion-body {
+            padding: 0 var(--space-4) var(--space-4);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .accordion-body ol, .accordion-body ul {
+            padding-left: var(--space-4);
+            margin-top: var(--space-2);
+        }
+        .accordion-body li {
+            margin-bottom: var(--space-2);
+        }
+        .accordion-body a {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                        <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                        <line x1="12" y1="20" x2="12.01" y2="20"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>ERVITA.NET</h1>
+                    <span>Pusat Bantuan</span>
+                </div>
+            </div>
+            <a href="login.html" class="icon-btn" style="text-decoration:none;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </a>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <div class="card animate-fadeIn">
+                <div class="card-header" style="text-align:left;">
+                    <h2>Pusat Bantuan</h2>
+                    <p>Temukan jawaban untuk pertanyaan umum</p>
+                </div>
+                
+                <!-- Search -->
+                <div class="faq-search">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <input type="text" id="faq-search" placeholder="Cari pertanyaan...">
+                </div>
+                
+                <!-- Accordion -->
+                <div class="accordion" id="faq-accordion">
+                    
+                    <div class="accordion-item" data-keywords="cara terhubung wifi hotspot login">
+                        <button class="accordion-header">
+                            <span>Cara Terhubung ke WiFi Hotspot</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <ol>
+                                    <li>Siapkan Kode Voucher yang Anda miliki. Jika belum punya, silakan beli voucher terlebih dahulu.</li>
+                                    <li>Pastikan area Anda tercover dengan signal WiFi kami.</li>
+                                    <li>Aktifkan wireless pada smartphone atau laptop Anda dan koneksikan dengan SSID WiFi kami.</li>
+                                    <li>Tunggu beberapa saat sampai pop-up notifikasi untuk login muncul.</li>
+                                    <li>Setelah Anda berhasil masuk ke halaman login, silakan aktivasi KODE VOUCHER dan klik Login.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item" data-keywords="notifikasi login tidak muncul manual">
+                        <button class="accordion-header">
+                            <span>Notifikasi untuk Login Tidak Muncul</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Jika notifikasi tidak muncul padahal perangkat sudah tersambung ke hotspot, lakukan cara manual berikut:</p>
+                                <ol>
+                                    <li>Silakan buka aplikasi browser (Chrome, Mozilla, dll) pada smartphone atau laptop Anda.</li>
+                                    <li>Ketikkan URL pada address bar browser: <strong>login.ERVITA.NET.id</strong> lalu tekan enter.</li>
+                                    <li>Tunggu hingga proses loading selesai menampilkan halaman login.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item" data-keywords="cek masa aktif voucher sisa waktu">
+                        <button class="accordion-header">
+                            <span>Cara Cek Masa Aktif Voucher</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <ol>
+                                    <li>Gunakan Browser (Google Chrome, UC Browser, atau lainnya).</li>
+                                    <li>Ketikkan pada address bar: <a href="status.html">status.ERVITA.NET.id</a></li>
+                                    <li>Tunggu hingga loading selesai menampilkan halaman.</li>
+                                    <li>Lihat informasi sisa waktu pada halaman status.</li>
+                                    <li>Contoh: <strong>16h28m</strong> berarti 16 jam 28 menit.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item" data-keywords="voucher perangkat lain pindah logout">
+                        <button class="accordion-header">
+                            <span>Apakah Voucher Bisa Digunakan di Perangkat Lain?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Ya</strong>, voucher bisa digunakan di perangkat lain dengan catatan:</p>
+                                <ul>
+                                    <li>Anda harus <strong>logout terlebih dahulu</strong> dari perangkat sebelumnya.</li>
+                                    <li>Sistem kami menggunakan alamat <strong>IP ADDRESS</strong>.</li>
+                                    <li>Hanya <strong>1 IP ADDRESS</strong> untuk satu <strong>KODE VOUCHER</strong>.</li>
+                                    <li>Anda tidak dapat menggunakan 1 voucher untuk 2 perangkat secara bersamaan.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item" data-keywords="tidak bisa internet login error">
+                        <button class="accordion-header">
+                            <span>Sudah Login Tapi Tidak Bisa Internet</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Jika mengalami masalah ini, silakan:</p>
+                                <ol>
+                                    <li>Hubungi admin melalui WhatsApp.</li>
+                                    <li>Laporkan kendala yang Anda alami.</li>
+                                    <li>Kami akan melakukan pengecekan.</li>
+                                    <li>Jika masalah dari server, akan kami berikan voucher pengganti.</li>
+                                </ol>
+                                <a href="https://wa.me/6285172207018" target="_blank" class="btn btn-primary" style="margin-top:var(--space-3);">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                    </svg>
+                                    Hubungi Support
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Contact Card -->
+            <div class="card animate-fadeInUp" style="animation-delay:0.1s;">
+                <div style="text-align:center;">
+                    <div style="width:56px;height:56px;background:var(--bg-tertiary);border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-3);color:var(--primary);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                        </svg>
+                    </div>
+                    <h3 style="margin-bottom:var(--space-1);font-size:1.1rem;">Masih Butuh Bantuan?</h3>
+                    <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:var(--space-4);">Tim support kami siap membantu Anda</p>
+                    <a href="https://wa.me/6285172207018" target="_blank" class="btn btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                        </svg>
+                        Hubungi Kami
+                    </a>
+                </div>
+            </div>
+            
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 ERVITA.NET - Internet Cepat & Stabil</p>
+        </footer>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/setting.js"></script>
+    
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const item = this.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Open clicked if wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('faq-search');
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            
+            accordionItems.forEach(item => {
+                const keywords = item.dataset.keywords || '';
+                const header = item.querySelector('.accordion-header span').textContent.toLowerCase();
+                const body = item.querySelector('.accordion-body').textContent.toLowerCase();
+                
+                if (query === '' || keywords.includes(query) || header.includes(query) || body.includes(query)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

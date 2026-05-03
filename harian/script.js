@@ -2,7 +2,7 @@ const buttonContainer = document.getElementById('buttonContainer');
 const voucherContainer = document.getElementById('voucherContainer');
 
 // Jumlah file JSON (ubah sesuai kebutuhan)
-const totalFiles = 8;
+const totalFiles = 1;
 
 // Buat tombol otomatis
 for (let i = 1; i <= totalFiles; i++) {

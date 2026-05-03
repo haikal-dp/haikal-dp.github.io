@@ -1,0 +1,413 @@
+/**
+ * RESPONSIVE.CSS
+ * ==============
+ * Responsive design untuk berbagai ukuran layar
+ */
+
+/* ============================================
+   TABLET (768px - 1024px)
+   ============================================ */
+@media (min-width: 768px) {
+  .app-container {
+    max-width: 520px;
+  }
+  
+  .main-content {
+    padding: var(--space-5);
+  }
+  
+  .card {
+    padding: var(--space-6);
+  }
+  
+  .price-grid {
+    gap: var(--space-4);
+  }
+  
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+/* ============================================
+   DESKTOP (1024px+)
+   ============================================ */
+@media (min-width: 1024px) {
+  .app-container {
+    max-width: 480px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
+  }
+  
+  body {
+    background: linear-gradient(135deg, #0a0f1a 0%, #0f172a 50%, #1a1f2e 100%);
+  }
+}
+
+/* ============================================
+   MOBILE LARGE (376px - 480px)
+   ============================================ */
+@media (max-width: 480px) {
+  html {
+    font-size: 13.5px;
+  }
+  
+  .app-container {
+    padding-bottom: 90px;
+  }
+  
+  .main-content {
+    padding: var(--space-3);
+  }
+  
+  .card {
+    padding: var(--space-4);
+    margin-bottom: var(--space-3);
+  }
+  
+  .header {
+    padding: var(--space-3) var(--space-4);
+  }
+  
+  .brand-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .brand-text h1 {
+    font-size: 1.1rem;
+  }
+  
+  .price-grid {
+    gap: var(--space-2);
+  }
+  
+  .price-card {
+    padding: var(--space-3) var(--space-2);
+  }
+  
+  .price-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .price-speed {
+    font-size: 0.8rem;
+  }
+  
+  .price-amount {
+    font-size: 0.7rem;
+  }
+  
+  .menu-grid {
+    gap: var(--space-2);
+  }
+  
+  .menu-item {
+    padding: var(--space-3) var(--space-2);
+  }
+  
+  .menu-item svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .input-field {
+    padding: var(--space-3) var(--space-3) var(--space-3) 2.5rem;
+  }
+  
+  .btn-lg {
+    padding: var(--space-3) var(--space-5);
+  }
+}
+
+/* ============================================
+   MOBILE SMALL (<= 375px)
+   ============================================ */
+@media (max-width: 375px) {
+  html {
+    font-size: 13px;
+  }
+  
+  .main-content {
+    padding: var(--space-3);
+  }
+  
+  .card {
+    padding: var(--space-4);
+    border-radius: var(--radius);
+  }
+  
+  .card-header h2 {
+    font-size: 1.05rem;
+  }
+  
+  .tabs {
+    margin-bottom: var(--space-4);
+  }
+  
+  .tab-btn {
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.8rem;
+  }
+  
+  .price-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+  }
+  
+  .price-card {
+    padding: var(--space-3) var(--space-1);
+  }
+  
+  .price-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .price-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .price-speed {
+    font-size: 0.75rem;
+  }
+  
+  .price-amount {
+    font-size: 0.65rem;
+  }
+  
+  .price-period {
+    font-size: 0.55rem;
+  }
+  
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+  }
+  
+  .menu-item {
+    padding: var(--space-3) var(--space-1);
+    border-radius: var(--radius-sm);
+  }
+  
+  .menu-item svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .menu-item span {
+    font-size: 0.7rem;
+  }
+  
+  .input-field {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: var(--space-3) var(--space-3) var(--space-3) 2.25rem;
+  }
+  
+  .input-icon {
+    left: var(--space-3);
+  }
+  
+  .btn-lg {
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.95rem;
+  }
+  
+  .alert {
+    padding: var(--space-3);
+    font-size: 0.8rem;
+  }
+  
+  .status-header {
+    gap: var(--space-3);
+  }
+  
+  .status-avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+  
+  .status-info h3 {
+    font-size: 1rem;
+  }
+  
+  .status-item {
+    padding: var(--space-2) 0;
+  }
+  
+  .status-label {
+    font-size: 0.8rem;
+  }
+  
+  .status-value {
+    font-size: 0.8rem;
+  }
+  
+  .result-card {
+    padding: var(--space-6);
+  }
+  
+  .result-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 2rem;
+  }
+  
+  .popup-box {
+    padding: var(--space-5);
+  }
+  
+  .banner-content h3 {
+    font-size: 1rem;
+  }
+  
+  .banner-content p {
+    font-size: 0.75rem;
+  }
+}
+
+/* ============================================
+   MOBILE EXTRA SMALL (<= 320px)
+   ============================================ */
+@media (max-width: 320px) {
+  html {
+    font-size: 12px;
+  }
+  
+  .price-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+  
+  .price-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3);
+    text-align: left;
+  }
+  
+  .price-card > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  
+  .price-icon {
+    margin: 0;
+  }
+  
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .tabs {
+    flex-direction: column;
+  }
+  
+  .tab-btn {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   LANDSCAPE MODE
+   ============================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+  .result-page {
+    min-height: auto;
+    padding: var(--space-4);
+  }
+  
+  .result-card {
+    padding: var(--space-5);
+  }
+  
+  .result-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 1.75rem;
+    margin-bottom: var(--space-3);
+  }
+  
+  .popup-overlay {
+    align-items: flex-start;
+    padding-top: var(--space-8);
+  }
+}
+
+/* ============================================
+   HIGH DPI / RETINA DISPLAYS
+   ============================================ */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .brand-icon,
+  .price-icon,
+  .menu-icon {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .spinner {
+    animation: none;
+    border-top-color: var(--border);
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .header,
+  .popup-overlay,
+  .banner-dots {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+}
+
+/* ============================================
+   SAFARI / IOS FIXES
+   ============================================ */
+@supports (-webkit-touch-callout: none) {
+  /* CSS specific to iOS devices */
+  .input-field {
+    font-size: 16px; /* Prevent zoom on focus */
+  }
+  
+  .btn {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ============================================
+   FIREFOX FIXES
+   ============================================ */
+@-moz-document url-prefix() {
+  .input-field {
+    background-clip: padding-box;
+  }
+}

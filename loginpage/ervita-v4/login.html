@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="ERVITA.NET">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="msapplication-navbutton-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Login Hotspot - Internet Cepat & Stabil">
+    <link rel="icon" href="img/favicon.png">
+    <title>Login - Hotspot WiFi</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/ervita.css">
+</head>
+<body>
+    
+    <!-- MikroTik Hidden Form (JANGAN DIUBAH) -->
+    <span class="hilang">$(if chap-id)</span>
+    <form name="sendin" action="$(link-login-only)" method="post">
+        <input type="hidden" name="username">
+        <input type="hidden" name="password">
+        <input type="hidden" name="dst" value="$(link-orig)">
+        <input type="hidden" name="popup" value="true">
+    </form>
+    <script src="md5.js"></script>
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+    </script>
+    <span class="hilang">$(endif)</span>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h1 data-fill="brand-name">HOTSPOT</h1>
+            </div>
+            <button class="notification-btn" onclick="toggleDropdown()" aria-label="Notifikasi">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">1</span>
+            </button>
+        </header>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu" id="dropdownMenu">
+            <div class="dropdown-header">
+                <i class="fas fa-server"></i> Status Server
+            </div>
+            <div class="dropdown-content">
+                <div class="status-indicator status-online" id="statusServer">
+                    <span>Memeriksa...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Banner Slider -->
+            <div class="hero-banner animate-fadeIn" id="banner-container">
+                <!-- Banner akan di-generate oleh setting.js -->
+            </div>
+
+            <!-- Price List -->
+            <div class="price-section">
+                <div class="price-section-title">
+                    <i class="fas fa-crown"></i>
+                    <span>Paket Internet Bulanan</span>
+                </div>
+                
+                <div class="price-grid" id="price-grid">
+                    <!-- Price cards akan di-generate oleh setting.js -->
+                </div>
+                
+                <!-- Combo Package -->
+                <div class="combo-section" id="combo-section">
+                    <!-- Combo card akan di-generate oleh setting.js -->
+                </div>
+            </div>
+
+            <!-- Login Card -->
+            <div class="card animate-fadeInUp">
+                <div class="card-header">
+                    <h3><i class="fas fa-ticket-alt" style="color: var(--primary); margin-right: 8px;"></i>Masukkan Kode Voucher</h3>
+                    <p>Masukkan kode voucher untuk mengakses internet</p>
+                </div>
+                
+                <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()"$(endif)>
+                    <input type="hidden" name="dst" value="$(link-orig)">
+                    <input type="hidden" name="popup" value="true">
+                    
+                    <div class="input-group">
+                        <i class="fas fa-ticket"></i>
+                        <input type="text" name="username" id="user" placeholder="Kode Voucher" required autocomplete="off" autofocus>
+                    </div>
+                    <input type="hidden" name="password" id="pass">
+                    
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login</span>
+                    </button>
+                </form>
+
+                <!-- Warning Box -->
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div class="warning-content">
+                        <h5><i class="fas fa-info-circle"></i> Perhatian!</h5>
+                        <p>Jika voucher sudah digunakan, <strong>jangan coba-coba untuk menukar</strong>. Voucher bersifat sekali pakai dan tidak dapat digunakan kembali setelah login berhasil.</p>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <span class="hilang">$(if error)</span>
+                <div id="infoError" class="alert alert-danger" style="margin-top: 1rem;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="errorText">$(error)</span>
+                </div>
+                <span class="hilang">$(endif)</span>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="menu-grid" id="menu-grid">
+                <!-- Menu items akan di-generate oleh setting.js -->
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p data-fill="copyright">&copy; 2026 Hotspot WiFi</p>
+            <p>Powered by MikroTik</p>
+        </footer>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player-container" id="music-player-container">
+        <!-- Music player akan di-generate oleh setting.js -->
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" id="bottom-nav">
+        <!-- Nav items akan di-generate oleh setting.js -->
+    </nav>
+
+    <!-- Popup Modal -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup-box">
+            <i class="fas fa-info-circle" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+            <h3>Informasi</h3>
+            <p id="popupMessage">Message here</p>
+            <button class="btn btn-primary" onclick="closePopup()">Tutup</button>
+        </div>
+    </div>
+
+    <!-- Main Script -->
+    <script>
+
+/**
+ * MIKROTIK LOGIN PAGE - SETTING.JS
+ * ============================================
+ * File konfigurasi utama untuk MikroTik Hotspot
+ * Version: 4.0 - Blue Theme Edition
+ * 
+ * CARA PENGGUNAAN:
+ * 1. Edit bagian CONFIG di bawah ini sesuai kebutuhan
+ * 2. Semua konten HTML akan diisi otomatis via DOM manipulation
+ * 3. Pastikan file ini di-include di semua halaman HTML
+ */
+
+// ============================================
+// KONFIGURASI UTAMA - EDIT SESUAI KEBUTUHAN
+// ============================================
+const HOTSPOT_CONFIG = {
+    // --- Informasi Hotspot ---
+    info: {
+        nama: 'ERVITA.NET',
+        tagline: 'Internet Cepat & Stabil',
+        tahun: '2026',
+        alamat: 'Indonesia',
+        whatsapp: '6285172207018',
+        email: 'support@ervita.net'
+    },
+
+    // --- Tema Warna (Biru Professional) ---
+    tema: {
+        primary: '#2563eb',        // Biru utama
+        primaryDark: '#1d4ed8',    // Biru gelap
+        primaryLight: '#3b82f6',   // Biru terang
+        accent: '#0ea5e9',         // Biru muda/sky
+        success: '#10b981',
+        warning: '#f59e0b',
+        danger: '#ef4444',
+        info: '#06b6d4'
+    },
+
+    // --- Banner Slider ---
+    banner: {
+        // Jumlah banner yang ditampilkan (1-5)
+        jumlah: 1,
+        
+        // Interval autoplay dalam milidetik
+        interval: 5000,
+        
+        // Daftar gambar banner (URL lengkap)
+        // Gunakan raw.githubusercontent.com untuk gambar dari GitHub
+        gambar: [
+            'https://raw.githubusercontent.com/haikal-dp/haikal-dp.github.io/refs/heads/main/ERVITA.NET%2020260205_195457.jpg',
+            'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=450&fit=crop',
+            'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=450&fit=crop'
+        ],
+        
+        // Teks overlay untuk setiap banner
+        teks: [
+            { judul: 'Selamat Bergabung', subjudul: 'Voucher Bisa Beli Melalui WhatsApp' },
+            { judul: 'Internet Cepat', subjudul: 'Kecepatan hingga 100 Mbps' },
+            { judul: 'Support 24/7', subjudul: 'Siap membantu kapan saja' }
+        ],
+        
+        // Gambar fallback jika utama gagal dimuat
+        fallback: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=450&fit=crop'
+    },
+
+    // --- Daftar Harga Paket Internet ---
+    hargaPaket: [
+        { kecepatan: '10 Mbps', harga: 'Rp 150.000', icon: 'rocket', populer: false },
+        { kecepatan: '20 Mbps', harga: 'Rp 200.000', icon: 'bolt', populer: true },
+        { kecepatan: '40 Mbps', harga: 'Rp 350.000', icon: 'meteor', populer: false }
+    ],
+
+    // --- Paket Combo (Internet + CCTV) ---
+    combo: {
+        judul: 'Paket Combo Spesial!',
+        deskripsi: 'Internet + CCTV Online dalam satu paket hemat',
+        fitur: [
+            { icon: 'wifi', teks: '20 Mbps Unlimited' },
+            { icon: 'video', teks: 'CCTV Online 24/7' },
+            { icon: 'mobile-alt', teks: 'Akses dari HP' },
+            { icon: 'cloud', teks: 'Cloud Recording' }
+        ],
+        hargaNormal: 'Rp 200.000',
+        hargaPasang: 'Rp 450.000',
+        catatan: 'Sudah termasuk instalasi internet & CCTV lengkap!'
+    },
+
+    // --- Daftar Voucher ---
+    voucher: [
+        { nama: 'Voucher 10 Jam', durasi: '10 jam', harga: 'Rp 3.000' },
+        { nama: 'Voucher 2 Hari', durasi: '2 hari', harga: 'Rp 6.000' },
+        { nama: 'Voucher 7 Hari', durasi: '7 hari', harga: 'Rp 20.000' },
+        { nama: 'Voucher 30 Hari', durasi: '30 hari', harga: 'Rp 50.000' }
+    ],
+
+    // --- Musik Background ---
+    musik: {
+        // Aktifkan/nonaktifkan musik
+        aktif: true,
+        
+        // URL file musik (format MP3)
+        // Gunakan raw.githubusercontent.com untuk file dari GitHub
+        url: 'https://themamaship.com/music/Catalog/All%20About%20That%20Bass%20-%20Meghan%20Trainor.mp3',
+        
+        // Judul lagu yang ditampilkan
+        judul: 'All About That Bass',
+        
+        // Artis (opsional)
+        artis: 'Meghan Trainor',
+        
+        // Volume awal (0.0 - 1.0)
+        volume: 1.0,
+        
+        // Autoplay (catatan: beberapa browser memblokir autoplay)
+        autoplay: true,
+        
+        // Loop musik
+        loop: true
+    },
+
+    // --- Popup Promo ---
+    popup: {
+        // Aktifkan popup saat halaman dimuat
+        aktif: true,
+        
+        // Delay sebelum popup muncul (dalam milidetik)
+        delay: 2000,
+        
+        // Judul popup
+        judul: 'Pembelian Voucher Lebih Mudah!',
+        
+        // Isi popup (bisa HTML)
+        isi: `
+            Sekarang beli voucher tidak perlu menunggu kami keliling 😊<br><br>
+            <strong>Cara Pembelian:</strong><br>
+            1. Klik tombol <strong>WhatsApp</strong> di bawah<br>
+            2. Chat admin untuk beli voucher<br>atau salin <strong>085172207018 </strong><br>
+            3. Admin akan kirim <strong>kode voucher</strong><br>
+            4. Gunakan voucher untuk <strong>login internet</strong><br>
+            5. Lakukan pembayaran via <strong>QRIS</strong><br><br>
+            <strong>Catatan:</strong><br>
+            WhatsApp bisa dibuka <strong>sebelum login internet</strong> ✅
+        `,
+        
+        // Tombol WhatsApp
+        tombolWA: true,
+        waText: 'Pesan via WhatsApp'
+    },
+
+    // --- Menu Grid ---
+    menu: [
+        { id: 'gratis', label: 'Gratis', icon: 'gift', href: 'trial-user.html', warna: '#10b981' },
+        { id: 'member', label: 'Member', icon: 'users', href: 'member.html', warna: '#3b82f6' },
+        { id: 'qr', label: 'QR Code', icon: 'qrcode', href: 'https://laksa19.github.io/myqr', eksternal: true, warna: '#06b6d4' },
+        { id: 'paket', label: 'Paket', icon: 'tags', href: 'voucher.html', warna: '#f59e0b' },
+        { id: 'bantuan', label: 'Bantuan', icon: 'question-circle', href: 'faq.html', warna: '#eab308' },
+        { id: 'contact', label: 'Contact', icon: 'whatsapp', href: 'https://wa.me/6285172207018', eksternal: true, warna: '#22c55e' }
+    ],
+
+    // --- Bottom Navigation ---
+    bottomNav: [
+        { label: 'Home', icon: 'home', href: 'login.html', aktif: true },
+        { label: 'Aktivasi', icon: 'shield-alt', href: 'aktivasi.html', aktif: false },
+        { label: 'About', icon: 'user', href: 'about.html', aktif: false }
+    ],
+
+    // --- Fitur Unggulan ---
+    fitur: [
+        { 
+            judul: 'Free Support', 
+            deskripsi: 'Kami selalu memberikan support yang baik serta pelayanan yang ramah kepada pelanggan',
+            icon: 'headset',
+            warna: '#10b981'
+        },
+        { 
+            judul: 'Pilihan Paket', 
+            deskripsi: 'Harga & Paket yang ditawarkan tersedia dalam berbagai pilihan Bandwidth Customer',
+            icon: 'box-open',
+            warna: '#3b82f6'
+        },
+        { 
+            judul: 'Layanan Profesional', 
+            deskripsi: 'Layanan kami adalah solusi bagi semua kebutuhan Customer dengan biaya yang efisien & efektif',
+            icon: 'cogs',
+            warna: '#f59e0b'
+        },
+        { 
+            judul: 'Internet Cepat', 
+            deskripsi: 'Kecepatan internet hingga 1 Gbps dengan koneksi yang stabil',
+            icon: 'bolt',
+            warna: '#8b5cf6'
+        },
+        { 
+            judul: 'Keamanan Terjamin', 
+            deskripsi: 'Jaringan terenkripsi dengan sistem keamanan yang handal',
+            icon: 'shield-alt',
+            warna: '#06b6d4'
+        },
+        { 
+            judul: 'Harga Terjangkau', 
+            deskripsi: 'Paket internet murah mulai dari Rp 3.000 saja',
+            icon: 'tags',
+            warna: '#ec4899'
+        }
+    ],
+
+    // --- Pesan Error (Translasi) ---
+    errorMessages: {
+        'user $(username) has reached uptime limit': 'Masa Aktif Voucher anda sudah habis',
+        'user $(username) has reached traffic limit': 'Kuota Voucher anda sudah habis',
+        'no valid profile found': 'Profil tidak valid',
+        'invalid username or password': 'Kode voucher salah atau tidak terdaftar',
+        'user <$(username)> not found': 'Voucher Tidak Ditemukan',
+        'simultaneous session limit reached': 'Jumlah Session Login Telah Dibatasi',
+        'no more sessions are allowed for user $(username)': 'Voucher sedang digunakan di perangkat lain'
+    }
+};
+
+// ============================================
+// BANNER SLIDER CLASS
+// ============================================
+class BannerSlider {
+    constructor(config = HOTSPOT_CONFIG.banner) {
+        this.config = config;
+        this.currentSlide = 0;
+        this.slider = null;
+        this.dotsContainer = null;
+        this.autoPlayTimer = null;
+        this.totalSlides = Math.min(config.jumlah, config.gambar.length);
+        
+        this.init();
+    }
+    
+    init() {
+        this.createBannerHTML();
+        this.setupEventListeners();
+        this.startAutoPlay();
+    }
+    
+    createBannerHTML() {
+        const container = document.getElementById('banner-container');
+        if (!container) return;
+        
+        // Buat wrapper slider
+        const sliderWrapper = document.createElement('div');
+        sliderWrapper.className = 'slider';
+        
+        // Buat slides wrapper
+        const slidesWrapper = document.createElement('div');
+        slidesWrapper.className = 'slides-wrapper';
+        slidesWrapper.id = 'banner-slider';
+        
+        // Generate slides
+        for (let i = 0; i < this.totalSlides; i++) {
+            const slide = this.createSlide(i);
+            slidesWrapper.appendChild(slide);
+        }
+        
+        sliderWrapper.appendChild(slidesWrapper);
+        container.appendChild(sliderWrapper);
+        
+        // Buat dots indicator
+        if (this.totalSlides > 1) {
+            this.createDots(container);
+        }
+        
+        this.slider = slidesWrapper;
+        this.slides = slidesWrapper.querySelectorAll('.slide');
+    }
+    
+    createSlide(index) {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        
+        const imgUrl = this.config.gambar[index] || this.config.fallback;
+        const text = this.config.teks[index] || { judul: HOTSPOT_CONFIG.info.nama, subjudul: HOTSPOT_CONFIG.info.tagline };
+        
+        slide.innerHTML = `
+            <img src="${imgUrl}" 
+                 alt="Banner ${index + 1}" 
+                 onerror="this.src='${this.config.fallback}'"
+                 loading="${index === 0 ? 'eager' : 'lazy'}">
+            <div class="slide-overlay">
+                <h4>${text.judul}</h4>
+                <p>${text.subjudul}</p>
+            </div>
+        `;
+        
+        return slide;
+    }
+    
+    createDots(container) {
+        const dotsWrapper = document.createElement('div');
+        dotsWrapper.className = 'slider-dots';
+        dotsWrapper.id = 'banner-dots';
+        
+        for (let i = 0; i < this.totalSlides; i++) {
+            const dot = document.createElement('span');
+            dot.className = `dot ${i === 0 ? 'active' : ''}`;
+            dot.onclick = () => this.goToSlide(i);
+            dotsWrapper.appendChild(dot);
+        }
+        
+        container.appendChild(dotsWrapper);
+        this.dots = dotsWrapper.querySelectorAll('.dot');
+    }
+    
+    goToSlide(index) {
+        if (index < 0 || index >= this.totalSlides) return;
+        
+        this.currentSlide = index;
+        
+        if (this.slider) {
+            this.slider.style.transform = `translateX(-${this.currentSlide * 100}%)`;
+        }
+        
+        if (this.dots) {
+            this.dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === this.currentSlide);
+            });
+        }
+    }
+    
+    nextSlide() {
+        const next = (this.currentSlide + 1) % this.totalSlides;
+        this.goToSlide(next);
+    }
+    
+    prevSlide() {
+        const prev = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+        this.goToSlide(prev);
+    }
+    
+    startAutoPlay() {
+        this.stopAutoPlay();
+        if (this.totalSlides <= 1) return;
+        this.autoPlayTimer = setInterval(() => this.nextSlide(), this.config.interval);
+    }
+    
+    stopAutoPlay() {
+        if (this.autoPlayTimer) {
+            clearInterval(this.autoPlayTimer);
+            this.autoPlayTimer = null;
+        }
+    }
+    
+    setupEventListeners() {
+        const container = document.getElementById('banner-container');
+        if (!container || this.totalSlides <= 1) return;
+        
+        container.addEventListener('mouseenter', () => this.stopAutoPlay());
+        container.addEventListener('mouseleave', () => this.startAutoPlay());
+        
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        container.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        container.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe(touchStartX, touchEndX);
+        }, { passive: true });
+    }
+    
+    handleSwipe(startX, endX) {
+        const swipeThreshold = 50;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                this.nextSlide();
+            } else {
+                this.prevSlide();
+            }
+        }
+    }
+}
+
+// ============================================
+// MUSIC PLAYER CLASS
+// ============================================
+class MusicPlayer {
+    constructor(config = HOTSPOT_CONFIG.musik) {
+        this.config = config;
+        this.audio = null;
+        this.isPlaying = false;
+        this.isMuted = false;
+        this.volume = config.volume;
+        
+        if (!config.aktif) return;
+        this.init();
+    }
+    
+    init() {
+        this.createPlayerHTML();
+        this.setupAudio();
+        this.setupEventListeners();
+        
+        if (this.config.autoplay) {
+            this.attemptAutoPlay();
+        }
+    }
+    
+    createPlayerHTML() {
+        const container = document.getElementById('music-player-container');
+        if (!container) return;
+        
+        container.innerHTML = `
+            <div class="music-player">
+                <div class="music-info">
+                    <div class="music-icon">
+                        <i class="fas fa-music"></i>
+                        <span class="music-wave"></span>
+                        <span class="music-wave"></span>
+                        <span class="music-wave"></span>
+                    </div>
+                    <div class="music-text">
+                        <span class="music-title">${this.config.judul}</span>
+                        <span class="music-artist">${this.config.artis}</span>
+                    </div>
+                </div>
+                <div class="music-controls">
+                    <button class="music-btn" id="music-play-btn" title="Play/Pause">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="music-btn" id="music-mute-btn" title="Mute/Unmute">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        this.playBtn = document.getElementById('music-play-btn');
+        this.muteBtn = document.getElementById('music-mute-btn');
+        this.waves = container.querySelectorAll('.music-wave');
+    }
+    
+    setupAudio() {
+        this.audio = new Audio(this.config.url);
+        this.audio.volume = this.volume;
+        this.audio.loop = this.config.loop;
+        
+        this.audio.addEventListener('play', () => {
+            this.isPlaying = true;
+            this.updatePlayButton();
+            this.startWaveAnimation();
+        });
+        
+        this.audio.addEventListener('pause', () => {
+            this.isPlaying = false;
+            this.updatePlayButton();
+            this.stopWaveAnimation();
+        });
+        
+        this.audio.addEventListener('error', () => {
+            this.showError();
+        });
+    }
+    
+    setupEventListeners() {
+        if (this.playBtn) {
+            this.playBtn.addEventListener('click', () => this.togglePlay());
+        }
+        
+        if (this.muteBtn) {
+            this.muteBtn.addEventListener('click', () => this.toggleMute());
+        }
+        
+        if (this.config.autoplay) {
+            const tryAutoPlay = () => {
+                this.play();
+                document.removeEventListener('click', tryAutoPlay);
+                document.removeEventListener('touchstart', tryAutoPlay);
+            };
+            
+            document.addEventListener('click', tryAutoPlay, { once: true });
+            document.addEventListener('touchstart', tryAutoPlay, { once: true });
+        }
+    }
+    
+    async attemptAutoPlay() {
+        try {
+            await this.audio.play();
+            this.isPlaying = true;
+            this.updatePlayButton();
+            this.startWaveAnimation();
+        } catch (error) {
+            this.isPlaying = false;
+            this.updatePlayButton();
+        }
+    }
+    
+    play() {
+        if (this.audio) {
+            this.audio.play().then(() => {
+                this.isPlaying = true;
+                this.updatePlayButton();
+                this.startWaveAnimation();
+            });
+        }
+    }
+    
+    pause() {
+        if (this.audio) {
+            this.audio.pause();
+            this.isPlaying = false;
+            this.updatePlayButton();
+            this.stopWaveAnimation();
+        }
+    }
+    
+    togglePlay() {
+        if (this.isPlaying) {
+            this.pause();
+        } else {
+            this.play();
+        }
+    }
+    
+    toggleMute() {
+        if (this.audio) {
+            this.isMuted = !this.isMuted;
+            this.audio.muted = this.isMuted;
+            this.updateMuteButton();
+        }
+    }
+    
+    updatePlayButton() {
+        if (this.playBtn) {
+            const icon = this.playBtn.querySelector('i');
+            if (icon) {
+                icon.className = this.isPlaying ? 'fas fa-pause' : 'fas fa-play';
+            }
+            this.playBtn.classList.toggle('playing', this.isPlaying);
+        }
+    }
+    
+    updateMuteButton() {
+        if (this.muteBtn) {
+            const icon = this.muteBtn.querySelector('i');
+            if (icon) {
+                icon.className = this.isMuted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+            }
+            this.muteBtn.classList.toggle('muted', this.isMuted);
+        }
+    }
+    
+    startWaveAnimation() {
+        this.waves.forEach((wave, index) => {
+            wave.style.animationDelay = `${index * 0.2}s`;
+            wave.classList.add('active');
+        });
+    }
+    
+    stopWaveAnimation() {
+        this.waves.forEach(wave => {
+            wave.classList.remove('active');
+        });
+    }
+    
+    showError() {
+        const container = document.getElementById('music-player-container');
+        if (container) {
+            container.innerHTML = `
+                <div class="music-player error">
+                    <div class="music-info">
+                        <div class="music-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="music-text">
+                            <span class="music-title">Gagal memuat musik</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    }
+}
+
+// ============================================
+// DOM MANIPULATION FUNCTIONS
+// ============================================
+
+// --- Isi Informasi Hotspot ---
+function fillHotspotInfo() {
+    const config = HOTSPOT_CONFIG.info;
+    
+    // Brand name
+    document.querySelectorAll('[data-fill="brand-name"]').forEach(el => {
+        el.textContent = config.nama;
+    });
+    
+    // Tagline
+    document.querySelectorAll('[data-fill="tagline"]').forEach(el => {
+        el.textContent = config.tagline;
+    });
+    
+    // Footer copyright
+    document.querySelectorAll('[data-fill="copyright"]').forEach(el => {
+        el.innerHTML = `&copy; ${config.tahun} ${config.nama} - ${config.tagline}`;
+    });
+    
+    // WhatsApp link
+    document.querySelectorAll('[data-fill="whatsapp-link"]').forEach(el => {
+        el.href = `https://wa.me/${config.whatsapp}`;
+    });
+    
+    // WhatsApp number display
+    document.querySelectorAll('[data-fill="whatsapp-number"]').forEach(el => {
+        el.textContent = config.whatsapp;
+    });
+    
+    // Alamat
+    document.querySelectorAll('[data-fill="alamat"]').forEach(el => {
+        el.textContent = config.alamat;
+    });
+    
+    // Email
+    document.querySelectorAll('[data-fill="email"]').forEach(el => {
+        el.textContent = config.email;
+    });
+}
+
+// --- Generate Daftar Harga ---
+function generatePriceCards() {
+    const container = document.getElementById('price-grid');
+    if (!container) return;
+    
+    container.innerHTML = HOTSPOT_CONFIG.hargaPaket.map((paket, index) => `
+        <div class="price-card ${paket.populer ? 'popular' : ''}" style="animation-delay: ${index * 0.1}s">
+            ${paket.populer ? '<span class="price-badge">POPULER</span>' : ''}
+            <div class="price-icon">
+                <i class="fas fa-${paket.icon}"></i>
+            </div>
+            <div class="price-speed">${paket.kecepatan}</div>
+            <div class="price-amount">${paket.harga}</div>
+            <div class="price-label">/bulan</div>
+        </div>
+    `).join('');
+}
+
+// --- Generate Paket Combo ---
+function generateComboSection() {
+    const container = document.getElementById('combo-section');
+    if (!container) return;
+    
+    const config = HOTSPOT_CONFIG.combo;
+    
+    container.innerHTML = `
+        <div class="combo-card">
+            <div class="combo-header">
+                <div class="combo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="combo-title">
+                    <h4>${config.judul}</h4>
+                    <p>${config.deskripsi}</p>
+                </div>
+            </div>
+            
+            <div class="combo-features">
+                ${config.fitur.map(f => `
+                    <div class="combo-feature">
+                        <i class="fas fa-${f.icon}"></i>
+                        <span>${f.teks}</span>
+                    </div>
+                `).join('')}
+            </div>
+            
+            <div class="combo-price">
+                <span class="price-main">${config.hargaNormal}</span>
+                <span class="price-note">/bulan (harga normal)</span>
+            </div>
+            
+            <div class="combo-installation">
+                <i class="fas fa-tools"></i>
+                <strong>Pemasangan Awal hanya ${config.hargaPasang}</strong><br>
+                <small>${config.catatan}</small>
+            </div>
+        </div>
+    `;
+}
+
+// --- Generate Menu Grid ---
+function generateMenuGrid() {
+    const container = document.getElementById('menu-grid');
+    if (!container) return;
+    
+    container.innerHTML = HOTSPOT_CONFIG.menu.map((item, index) => `
+        <a href="${item.href}" ${item.eksternal ? 'target="_blank"' : ''} class="menu-item ${item.id}" style="animation-delay: ${index * 0.05}s">
+            <div class="menu-icon" style="background: linear-gradient(135deg, ${item.warna} 0%, ${adjustColor(item.warna, -20)} 100%);">
+                <i class="fas fa-${item.icon}"></i>
+            </div>
+            <h6>${item.label}</h6>
+        </a>
+    `).join('');
+}
+
+// --- Generate Bottom Navigation ---
+function generateBottomNav() {
+    const container = document.getElementById('bottom-nav');
+    if (!container) return;
+    
+    const currentPage = window.location.pathname.split('/').pop() || 'login.html';
+    
+    container.innerHTML = HOTSPOT_CONFIG.bottomNav.map(item => {
+        const isActive = currentPage === item.href || (currentPage === '' && item.href === 'login.html');
+        return `
+            <a href="${item.href}" class="nav-item ${isActive ? 'active' : ''}">
+                <i class="fas fa-${item.icon}"></i>
+                <span>${item.label}</span>
+            </a>
+        `;
+    }).join('');
+}
+
+// --- Generate Voucher Cards ---
+function generateVoucherCards() {
+    const container = document.getElementById('voucher-list');
+    if (!container) return;
+    
+    container.innerHTML = HOTSPOT_CONFIG.voucher.map((v, index) => `
+        <div class="voucher-card animate-fadeInUp" style="animation-delay: ${index * 0.1}s">
+            <div class="voucher-icon">
+                <i class="fas fa-ticket-alt"></i>
+            </div>
+            <div class="voucher-details">
+                <h5>${v.nama}</h5>
+                <p><i class="fas fa-clock"></i> Masa aktif ${v.durasi}</p>
+                <div class="voucher-price">${v.harga}</div>
+            </div>
+            <button class="voucher-btn" onclick="showPopup()">Beli</button>
+        </div>
+    `).join('');
+}
+
+// --- Generate Fitur Cards ---
+function generateFiturCards() {
+    const container = document.getElementById('fitur-list');
+    if (!container) return;
+    
+    container.innerHTML = HOTSPOT_CONFIG.fitur.map((f, index) => `
+        <div class="card animate-fadeInUp" style="display: flex; align-items: center; gap: 1rem; text-align: left; animation-delay: ${index * 0.1}s">
+            <div style="width: 64px; height: 64px; background: linear-gradient(135deg, ${f.warna} 0%, ${adjustColor(f.warna, -20)} 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <i class="fas fa-${f.icon}" style="color: white; font-size: 1.5rem;"></i>
+            </div>
+            <div>
+                <h4 style="font-weight: 700; color: var(--dark); margin-bottom: 0.25rem;">${f.judul}</h4>
+                <p style="font-size: 0.875rem; color: var(--gray-600);">${f.deskripsi}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+// --- Popup Promo ---
+function initPromoPopup() {
+    const config = HOTSPOT_CONFIG.popup;
+    if (!config.aktif) return;
+    
+    // Create popup HTML if not exists
+    if (!document.getElementById('promoPopup')) {
+        const popup = document.createElement('div');
+        popup.className = 'popup-overlay';
+        popup.id = 'promoPopup';
+        popup.innerHTML = `
+            <div class="popup-box">
+                <i class="fas fa-bullhorn" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <h3>${config.judul}</h3>
+                <p style="text-align:left; font-size:14px;">${config.isi}</p>
+                ${config.tombolWA ? `
+                    <a href="https://wa.me/${HOTSPOT_CONFIG.info.whatsapp}" target="_blank" class="btn btn-primary" style="margin-top:10px;">
+                        <i class="fab fa-whatsapp"></i> ${config.waText}
+                    </a>
+                ` : ''}
+                <button class="btn" onclick="closePromoPopup()" style="margin-top:10px; width: 100%;">
+                    Tutup
+                </button>
+            </div>
+        `;
+        document.body.appendChild(popup);
+    }
+    
+    // Show popup after delay
+    setTimeout(() => {
+        document.getElementById('promoPopup')?.classList.add('active');
+    }, config.delay);
+}
+
+function showPromoPopup() {
+    document.getElementById('promoPopup')?.classList.add('active');
+}
+
+function closePromoPopup() {
+    document.getElementById('promoPopup')?.classList.remove('active');
+}
+
+// --- Error Message Translation ---
+function translateErrorMessage() {
+    const errorEl = document.getElementById('errorText');
+    if (!errorEl) return;
+    
+    const error = errorEl.textContent.trim();
+    const translations = HOTSPOT_CONFIG.errorMessages;
+    
+    for (const [key, value] of Object.entries(translations)) {
+        if (error.includes(key.replace('$(username)', '').replace('<', '').replace('>', ''))) {
+            errorEl.textContent = value;
+            return;
+        }
+    }
+}
+
+// --- Welcome Message Based on Time ---
+function setWelcomeMessage() {
+    const el = document.getElementById('welcome-message');
+    if (!el) return;
+    
+    const hour = new Date().getHours();
+    let message = '';
+    
+    if (hour >= 5 && hour < 11) message = 'Selamat Pagi';
+    else if (hour >= 11 && hour < 15) message = 'Selamat Siang';
+    else if (hour >= 15 && hour < 18) message = 'Selamat Sore';
+    else message = 'Selamat Malam';
+    
+    el.textContent = message;
+}
+
+// --- Server Status Check ---
+function checkServerStatus() {
+    const statusEl = document.getElementById('statusServer');
+    if (!statusEl) return;
+    
+    const img = new Image();
+    img.onload = () => {
+        statusEl.innerHTML = '<span>Terhubung</span>';
+        statusEl.classList.add('status-online');
+        statusEl.classList.remove('status-offline');
+    };
+    img.onerror = () => {
+        statusEl.innerHTML = '<span>Offline</span>';
+        statusEl.classList.remove('status-online');
+        statusEl.classList.add('status-offline');
+    };
+    img.src = 'img/author.jpg?' + Date.now();
+}
+
+// --- Dropdown Toggle ---
+function toggleDropdown() {
+    document.getElementById('dropdownMenu')?.classList.toggle('active');
+}
+
+// --- Popup Functions ---
+function showPopup(message) {
+    const popupMessage = document.getElementById('popupMessage');
+    const popup = document.getElementById('popup');
+    if (popupMessage && popup) {
+        popupMessage.textContent = message;
+        popup.classList.add('active');
+    }
+}
+
+function closePopup() {
+    const popup = document.getElementById('popup');
+    if (popup) {
+        popup.classList.remove('active');
+    }
+}
+
+// --- Password Sync (for voucher login) ---
+function syncPassword() {
+    const userInput = document.getElementById('user');
+    const passInput = document.getElementById('pass');
+    
+    if (userInput && passInput) {
+        userInput.addEventListener('input', function() {
+            passInput.value = this.value;
+        });
+    }
+}
+
+// --- Auto Hide Error ---
+function autoHideError() {
+    setTimeout(() => {
+        const errorEl = document.querySelector('.alert-danger');
+        if (errorEl) {
+            errorEl.style.opacity = '0';
+            errorEl.style.transform = 'translateY(-10px)';
+            errorEl.style.transition = 'all 0.5s ease';
+            setTimeout(() => errorEl.remove(), 500);
+        }
+    }, 10000);
+}
+
+// --- Utility: Adjust Color Brightness ---
+function adjustColor(color, amount) {
+    const hex = color.replace('#', '');
+    const r = Math.max(0, Math.min(255, parseInt(hex.substr(0, 2), 16) + amount));
+    const g = Math.max(0, Math.min(255, parseInt(hex.substr(2, 2), 16) + amount));
+    const b = Math.max(0, Math.min(255, parseInt(hex.substr(4, 2), 16) + amount));
+    return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+}
+
+// --- Format Session Time ---
+function formatSessionTime() {
+    const el = document.getElementById('SisaWaktu');
+    if (!el) return;
+    
+    let time = el.textContent;
+    time = time.replace(/w/g, ' Minggu ')
+               .replace(/d/g, ' Hari ')
+               .replace(/h/g, ' Jam ')
+               .replace(/m/g, ' Menit ')
+               .replace(/s/g, ' Detik');
+    el.textContent = time;
+}
+
+// ============================================
+// INITIALIZE ALL COMPONENTS
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    // Fill hotspot info
+    fillHotspotInfo();
+    
+    // Generate dynamic content
+    generatePriceCards();
+    generateComboSection();
+    generateMenuGrid();
+    generateBottomNav();
+    generateVoucherCards();
+    generateFiturCards();
+    
+    // Initialize components
+    window.bannerSlider = new BannerSlider();
+    window.musicPlayer = new MusicPlayer();
+    
+    // Initialize functions
+    syncPassword();
+    autoHideError();
+    setWelcomeMessage();
+    translateErrorMessage();
+    checkServerStatus();
+    formatSessionTime();
+    initPromoPopup();
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        const dropdown = document.getElementById('dropdownMenu');
+        const btn = document.querySelector('.notification-btn');
+        if (dropdown && btn && !dropdown.contains(e.target) && !btn.contains(e.target)) {
+            dropdown.classList.remove('active');
+        }
+    });
+    
+    // Close popup on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closePopup();
+            closePromoPopup();
+        }
+    });
+});
+
+// ============================================
+// EXPORTS
+// ============================================
+window.HOTSPOT_CONFIG = HOTSPOT_CONFIG;
+window.BannerSlider = BannerSlider;
+window.MusicPlayer = MusicPlayer;
+window.showPopup = showPopup;
+window.closePopup = closePopup;
+window.showPromoPopup = showPromoPopup;
+window.closePromoPopup = closePromoPopup;
+window.toggleDropdown = toggleDropdown;
+
+
+
+</script>
+</body>
+</html>

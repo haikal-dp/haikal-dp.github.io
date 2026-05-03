@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="Hotspot">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="msapplication-navbutton-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" href="img/favicon.png">
+    <span class="hilang">$(if refresh-timeout)</span>
+    <meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+    <span class="hilang">$(endif)</span>
+    <title>Status - Hotspot WiFi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/ervita.css">
+    <script>
+        function openLogout() {
+            if (window.name != 'hotspot_status') return true;
+            open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=320,height=300');
+            window.close();
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h1 id="welcome-message">Selamat Datang</h1>
+            </div>
+            <button class="notification-btn" onclick="toggleDropdown()" aria-label="Notifikasi">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">1</span>
+            </button>
+        </header>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu" id="dropdownMenu">
+            <div class="dropdown-header">
+                <i class="fas fa-server"></i> Status Server
+            </div>
+            <div class="dropdown-content">
+                <div class="status-indicator status-online" id="statusServer">
+                    <span>Terhubung</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- User Profile Card -->
+            <div class="status-card animate-fadeIn">
+                <div class="status-header">
+                    <img src="img/author.jpg" alt="User" class="status-avatar" onerror="this.src='https://ui-avatars.com/api/?name=$(username)&background=2563eb&color=fff'">
+                    <div class="status-info">
+                        <h4>$(username)</h4>
+                        <p><i class="fas fa-circle" style="color: var(--success); font-size: 8px;"></i> Online</p>
+                    </div>
+                </div>
+                
+                <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+                    <input type="hidden" name="erase-cookie" value="on">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            </div>
+
+            <!-- Connection Status Card -->
+            <div class="status-card animate-fadeInUp">
+                <div class="card-header" style="text-align: left; margin-bottom: 1rem;">
+                    <h3><i class="fas fa-chart-bar" style="color: var(--primary); margin-right: 8px;"></i>Status Koneksi</h3>
+                </div>
+                
+                <div class="status-grid">
+                    <div class="status-row">
+                        <div class="status-label">
+                            <i class="fas fa-clock"></i> Uptime
+                        </div>
+                        <div class="status-value">$(uptime)</div>
+                    </div>
+                    
+                    <div class="status-row">
+                        <div class="status-label">
+                            <i class="fas fa-network-wired"></i> IP Address
+                        </div>
+                        <div class="status-value">$(ip)</div>
+                    </div>
+                    
+                    <div class="status-row">
+                        <div class="status-label">
+                            <i class="fas fa-fingerprint"></i> MAC Address
+                        </div>
+                        <div class="status-value">$(mac)</div>
+                    </div>
+                    
+                    <div class="status-row">
+                        <div class="status-label">
+                            <i class="fas fa-arrow-up" style="color: var(--success);"></i> Upload
+                        </div>
+                        <div class="status-value">$(bytes-in-nice)</div>
+                    </div>
+                    
+                    <div class="status-row">
+                        <div class="status-label">
+                            <i class="fas fa-arrow-down" style="color: var(--info);"></i> Download
+                        </div>
+                        <div class="status-value">$(bytes-out-nice)</div>
+                    </div>
+                    
+                    <span class="hilang">$(if remain-bytes-total)</span>
+                    <div class="status-row">
+                        <div class="status-label">
+                            <i class="fas fa-battery-half" style="color: var(--warning);"></i> Sisa Kuota
+                        </div>
+                        <div class="status-value">$(remain-bytes-total-nice)</div>
+                    </div>
+                    <span class="hilang">$(endif)</span>
+                    
+                    <span class="hilang">$(if blocked == 'yes')</span>
+                    <div class="status-row">
+                        <div class="status-label">
+                            <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i> Status
+                        </div>
+                        <div class="status-value">
+                            <a href="$(link-advert)" target="hotspot_advert" style="color: var(--danger);">Iklan Diperlukan</a>
+                        </div>
+                    </div>
+                    <span class="hilang">$(elif refresh-timeout)</span>
+                    <div class="status-row">
+                        <div class="status-label">
+                            <i class="fas fa-refresh"></i> Refresh
+                        </div>
+                        <div class="status-value">$(refresh-timeout)</div>
+                    </div>
+                    <span class="hilang">$(endif)</span>
+                    
+                    <span class="hilang">$(if session-time-left)</span>
+                    <div class="status-row">
+                        <div class="status-label">
+                            <i class="fas fa-hourglass-half" style="color: var(--primary);"></i> Sisa Waktu
+                        </div>
+                        <div class="status-value" id="SisaWaktu">$(session-time-left)</div>
+                    </div>
+                    <span class="hilang">$(endif)</span>
+                </div>
+            </div>
+
+            <!-- Info Card -->
+            <div class="card animate-fadeInUp" style="animation-delay: 0.2s;">
+                <div class="alert alert-info" style="margin-bottom: 0;">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>Tips:</strong> Jangan lupa logout saat selesai menggunakan internet untuk menghemat kuota voucher Anda.
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p data-fill="copyright">&copy; 2026 Hotspot WiFi</p>
+        </footer>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" id="bottom-nav"></nav>
+
+    <script src="js/setting.js"></script>
+</body>
+</html>

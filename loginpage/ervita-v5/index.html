@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="msapplication-navbutton-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="ERVITA.NET - Internet Cepat & Stabil. Login dengan voucher untuk mengakses internet.">
+    <meta name="author" content="ERVITA.NET">
+    <title>Login - ERVITA.NET</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%90%3C/text%3E%3C/svg%3E">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    
+    <!-- MikroTik Hidden Form (CHAP) -->
+    <span class="hilang">$(if chap-id)</span>
+    <form name="sendin" action="$(link-login-only)" method="post" style="display:none;">
+        <input type="hidden" name="username">
+        <input type="hidden" name="password">
+        <input type="hidden" name="dst" value="$(link-orig)">
+        <input type="hidden" name="popup" value="true">
+    </form>
+    <script src="js/md5.js"></script>
+    <span class="hilang">$(endif)</span>
+    
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                        <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                        <line x1="12" y1="20" x2="12.01" y2="20"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>ERVITA.NET</h1>
+                    <span>Internet Cepat & Stabil</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn" id="server-status" title="Status Server">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                        <line x1="6" y1="6" x2="6.01" y2="6"/>
+                        <line x1="6" y1="18" x2="6.01" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Banner -->
+            <div class="banner" id="banner">
+                <div class="banner-slider">
+                    <div class="banner-slide active">
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg,#0ea5e9 0%,#0284c7 100%);display:flex;align-items:center;justify-content:center;">
+                            <div style="text-align:center;color:white;padding:var(--space-5);">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="margin:0 auto var(--space-3);">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                                <h3>Internet Cepat & Stabil</h3>
+                                <p>Nikmati pengalaman browsing tanpa hambatan</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="banner-slide">
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg,#f97316 0%,#ea580c 100%);display:flex;align-items:center;justify-content:center;">
+                            <div style="text-align:center;color:white;padding:var(--space-5);">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="margin:0 auto var(--space-3);">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                                    <line x1="9" y1="9" x2="9.01" y2="9"/>
+                                    <line x1="15" y1="9" x2="15.01" y2="9"/>
+                                </svg>
+                                <h3>Paket Hemat</h3>
+                                <p>Pilih paket sesuai kebutuhan Anda</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-dots">
+                    <span class="banner-dot active"></span>
+                    <span class="banner-dot"></span>
+                </div>
+            </div>
+            
+            <!-- Price Cards -->
+            <div class="price-section">
+                <div class="section-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    Paket Internet Bulanan
+                </div>
+                <div class="price-grid">
+                    <div class="price-card">
+                        <div class="price-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                                <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                            </svg>
+                        </div>
+                        <div class="price-speed">10 Mbps</div>
+                        <div class="price-amount">Rp 150.000</div>
+                        <div class="price-period">/bulan</div>
+                    </div>
+                    <div class="price-card popular">
+                        <div class="price-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                            </svg>
+                        </div>
+                        <div class="price-speed">20 Mbps</div>
+                        <div class="price-amount">Rp 200.000</div>
+                        <div class="price-period">/bulan</div>
+                    </div>
+                    <div class="price-card">
+                        <div class="price-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M12 2v20M2 12h20"/>
+                            </svg>
+                        </div>
+                        <div class="price-speed">40 Mbps</div>
+                        <div class="price-amount">Rp 350.000</div>
+                        <div class="price-period">/bulan</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Login Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Login Internet</h2>
+                    <p>Pilih metode login Anda</p>
+                </div>
+                
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="voucher">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="6" width="20" height="12" rx="2"/>
+                            <path d="M12 6v12"/>
+                            <path d="M6 10h.01"/>
+                            <path d="M6 14h.01"/>
+                        </svg>
+                        Voucher
+                    </button>
+                    <button class="tab-btn" data-tab="member">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Member
+                    </button>
+                </div>
+                
+                <!-- Error Container -->
+                <div id="error-container"></div>
+                
+                <!-- Voucher Tab -->
+                <div class="tab-content active" id="voucher-tab">
+                    <form id="voucher-form" name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                        <input type="hidden" name="dst" value="$(link-orig)">
+                        <input type="hidden" name="popup" value="true">
+                        <input type="hidden" name="password" id="password-field">
+                        
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="6" width="20" height="12" rx="2"/>
+                                <path d="M12 6v12"/>
+                                <path d="M6 10h.01"/>
+                                <path d="M6 14h.01"/>
+                            </svg>
+                            <input 
+                                type="text" 
+                                id="voucher-input" 
+                                name="username" 
+                                class="input-field" 
+                                placeholder="Masukkan kode voucher"
+                                autocomplete="off"
+                                autofocus
+                                required
+                            >
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                                <polyline points="10 17 15 12 10 7"/>
+                                <line x1="15" y1="12" x2="3" y2="12"/>
+                            </svg>
+                            Login
+                        </button>
+                    </form>
+                    
+                    <div class="alert alert-info" style="margin-top:var(--space-4);margin-bottom:0;">
+                        <svg class="alert-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                        <div class="alert-content">
+                            Voucher bersifat sekali pakai. Jangan logout jika ingin menghemat kuota.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Member Tab -->
+                <div class="tab-content" id="member-tab">
+                    <form id="member-form" name="loginuspw" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLoginUSPW()" $(endif)>
+                        <input type="hidden" name="dst" value="$(link-orig)">
+                        <input type="hidden" name="popup" value="true">
+                        
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            <input 
+                                type="text" 
+                                id="username-input" 
+                                name="username" 
+                                class="input-field" 
+                                placeholder="Username"
+                                autocomplete="off"
+                                required
+                            >
+                        </div>
+                        
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                            <input 
+                                type="password" 
+                                id="member-password" 
+                                name="password" 
+                                class="input-field" 
+                                placeholder="Password"
+                                required
+                            >
+                            <button type="button" class="password-toggle" tabindex="-1">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                    <line x1="1" y1="1" x2="23" y2="23"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <div style="display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-4);">
+                            <input type="checkbox" id="remember-me" style="width:16px;height:16px;accent-color:var(--primary);">
+                            <label for="remember-me" style="font-size:0.85rem;color:var(--text-secondary);cursor:pointer;">Ingat username</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                                <polyline points="10 17 15 12 10 7"/>
+                                <line x1="15" y1="12" x2="3" y2="12"/>
+                            </svg>
+                            Login Member
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Menu Grid -->
+            <div class="menu-grid">
+                <span class="hilang">$(if trial == 'yes')</span>
+                <a href="trial-user.html" class="menu-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 12 20 22 4 22 4 12"/>
+                        <rect x="2" y="7" width="20" height="5"/>
+                        <line x1="12" y1="22" x2="12" y2="7"/>
+                        <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+                        <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+                    </svg>
+                    <span>Gratis</span>
+                </a>
+                <span class="hilang">$(else)</span>
+                <a href="javascript:void(0)" onclick="showPopup({title:'Informasi',message:'Maaf, login gratis sedang tidak tersedia.',icon:'info'})" class="menu-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 12 20 22 4 22 4 12"/>
+                        <rect x="2" y="7" width="20" height="5"/>
+                        <line x1="12" y1="22" x2="12" y2="7"/>
+                        <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+                        <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+                    </svg>
+                    <span>Gratis</span>
+                </a>
+                <span class="hilang">$(endif)</span>
+                
+                <a href="voucher.html" class="menu-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="6" width="20" height="12" rx="2"/>
+                        <path d="M12 6v12"/>
+                        <path d="M6 10h.01"/>
+                        <path d="M6 14h.01"/>
+                    </svg>
+                    <span>Voucher</span>
+                </a>
+                
+                <a href="faq.html" class="menu-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    <span>Bantuan</span>
+                </a>
+            </div>
+            
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 ERVITA.NET - Internet Cepat & Stabil</p>
+            <p>Powered by MikroTik</p>
+            <div class="footer-links">
+                <a href="about.html">Tentang Kami</a>
+                <a href="aktivasi.html">Cara Aktivasi</a>
+                <a href="https://wa.me/6285172207018" target="_blank">Hubungi Kami</a>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popup-overlay"></div>
+    
+    <!-- Hidden error element for Mikrotik -->
+    <span class="hilang" id="mikrotik-error">$(error)</span>
+    
+    <!-- Scripts -->
+    <script src="js/setting.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/popup.js"></script>
+    
+    <!-- Member Login CHAP Handler -->
+    <script>
+        function doLoginUSPW() {
+            var form = document.forms.loginuspw;
+            var sendin = document.forms.sendin;
+            
+            if (!form || !sendin) return true;
+            
+            sendin.username.value = form.username.value;
+            
+            $(if chap-id)
+            if (typeof hexMD5 === 'function') {
+                sendin.password.value = hexMD5('$(chap-id)' + form.password.value + '$(chap-challenge)');
+                sendin.submit();
+                return false;
+            }
+            $(endif)
+            
+            return true;
+        }
+    </script>
+    
+</body>
+</html>

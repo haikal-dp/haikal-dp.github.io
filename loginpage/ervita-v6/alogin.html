@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta http-equiv="refresh" content="2; url=$(link-redirect)">
+    <title>EVRVITA.NET - Redirecting</title>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+        function startClock() {
+            $(if popup == 'true')
+            open('$(link-status)', 'hotspot_status', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=290,height=200');
+            $(endif)
+            location.href = unescape('$(link-redirect-esc)');
+        }
+    </script>
+</head>
+<body onLoad="startClock()">
+    <div class="container">
+        <div class="main-card">
+            <div class="header">
+                <img src="img/logo.png" alt="EVRVITA.NET" class="logo" />
+                <div class="brand-title">EVRVITA<span>.NET</span></div>
+                <div class="brand-subtitle">Login Berhasil</div>
+            </div>
+            <div style="padding: 0 24px 24px; text-align:center">
+                <div class="alert alert-success show" style="margin-bottom:20px">
+                    Anda berhasil login ke jaringan EVRVITA.NET
+                </div>
+                <p class="info-text" style="margin-bottom:16px">
+                    Jika halaman tidak berpindah, klik <a href="$(link-redirect)" style="color:var(--primary);font-weight:600">di sini</a>.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-brand">ERVITA.NET</div>
+            <div class="footer-info">Pasar Rau<br/><a href="https://wa.me/6285172207018">WhatsApp: 085172207018</a></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta name="Author" content="Hotspot">
+    <meta name="theme-color" content="#ef4444">
+    <meta name="msapplication-navbutton-color" content="#ef4444">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ef4444">
+    <link rel="icon" href="img/favicon.png">
+    <title>Error - Hotspot WiFi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/ervita.css">
+</head>
+<body>
+    <div class="result-page">
+        <div class="result-card animate-scaleIn">
+            <div class="result-icon error">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2>Terjadi Kesalahan</h2>
+            <p id="errorMessage">$(error)</p>
+            
+            <a href="$(link-login)" class="btn btn-primary btn-block" style="margin-top: 1rem;">
+                <i class="fas fa-arrow-circle-left"></i> Kembali ke Login
+            </a>
+            
+            <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--gray-200);">
+                <a href="#" data-fill="whatsapp-link" target="_blank" style="color: #25d366; text-decoration: none; font-size: 0.875rem;">
+                    <i class="fab fa-whatsapp"></i> Hubungi Support
+                </a>
+            </div>
+        </div>
+        
+        <footer class="footer" style="margin-top: 2rem;">
+            <p data-fill="copyright">&copy; 2026 Hotspot WiFi</p>
+        </footer>
+    </div>
+    
+    <script src="js/setting.js"></script>
+    <script>
+        // Translate common errors
+        const errorTranslations = {
+            'user $(username) has reached uptime limit': 'Masa aktif voucher Anda sudah habis',
+            'user $(username) has reached traffic limit': 'Kuota voucher Anda sudah habis',
+            'no valid profile found': 'Profil voucher tidak valid',
+            'invalid username or password': 'Kode voucher salah atau tidak terdaftar',
+            'user <$(username)> not found': 'Voucher tidak ditemukan',
+            'simultaneous session limit reached': 'Batas session tercapai',
+            'no more sessions are allowed for user $(username)': 'Voucher sedang digunakan di perangkat lain'
+        };
+        
+        const errorMsg = document.getElementById('errorMessage').textContent;
+        for (const [key, value] of Object.entries(errorTranslations)) {
+            if (errorMsg.includes(key.replace('$(username)', '').replace('<', '').replace('>', ''))) {
+                document.getElementById('errorMessage').textContent = value;
+                break;
+            }
+        }
+    </script>
+</body>
+</html>

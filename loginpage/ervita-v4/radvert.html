@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="2; url=$(link-orig)">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta name="Author" content="Hotspot">
+    <meta name="theme-color" content="#f59e0b">
+    <link rel="icon" href="img/favicon.png">
+    <title>Iklan - Hotspot WiFi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/ervita.css">
+    <script>
+        var popup = '';
+        function openOrig() {
+            if (window.focus) popup.focus();
+            location.href = unescape('$(link-orig-esc)');
+        }
+        function openAd() {
+            location.href = unescape('$(link-redirect-esc)');
+        }
+        function openAdvert() {
+            if (window.name != 'hotspot_advert') {
+                popup = open('$(link-redirect)', 'hotspot_advert', '');
+                setTimeout("openOrig()", 1000);
+                return;
+            }
+            setTimeout("openAd()", 1000);
+        }
+    </script>
+</head>
+<body onload="openAdvert()">
+    <div class="result-page">
+        <div class="result-card animate-scaleIn">
+            <div class="result-icon" style="background: var(--warning-light); color: var(--warning);">
+                <i class="fas fa-ad"></i>
+            </div>
+            <h2>Iklan</h2>
+            <p>Silakan tunggu sebentar. Anda akan diarahkan ke halaman iklan...</p>
+            
+            <p style="margin-top: 1rem; font-size: 0.875rem;">
+                Jika tidak terjadi apa-apa, 
+                <a href="$(link-redirect)" target="hotspot_advert" style="color: var(--primary);">klik disini</a>
+            </p>
+            
+            <div class="spinner" style="margin-top: 1.5rem;"></div>
+        </div>
+        
+        <footer class="footer" style="margin-top: 2rem;">
+            <p data-fill="copyright">&copy; 2026 Hotspot WiFi</p>
+        </footer>
+    </div>
+    
+    <script src="js/setting.js"></script>
+</body>
+</html>

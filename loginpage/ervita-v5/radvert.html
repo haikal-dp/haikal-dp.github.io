@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="refresh" content="2; url=$(link-orig)">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta name="theme-color" content="#f59e0b">
+    <meta name="msapplication-navbutton-color" content="#f59e0b">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Iklan - ERVITA.NET</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%90%3C/text%3E%3C/svg%3E">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <script>
+        var popup = '';
+        function openOrig() {
+            if (window.focus) popup.focus();
+            location.href = unescape('$(link-orig-esc)');
+        }
+        function openAd() {
+            location.href = unescape('$(link-redirect-esc)');
+        }
+        function openAdvert() {
+            if (window.name != 'hotspot_advert') {
+                popup = open('$(link-redirect)', 'hotspot_advert', '');
+                setTimeout("openOrig()", 1000);
+                return;
+            }
+            setTimeout("openAd()", 1000);
+        }
+    </script>
+</head>
+<body onload="openAdvert()">
+    
+    <div class="result-page">
+        <div class="result-card animate-scaleIn">
+            <div class="result-icon" style="background:rgba(245,158,11,0.1);color:var(--accent-yellow);">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+            </div>
+            <h2>Iklan</h2>
+            <p>Silakan tunggu sebentar. Anda akan diarahkan ke halaman iklan...</p>
+            
+            <p style="margin-top:var(--space-4);font-size:0.875rem;">
+                Jika tidak terjadi apa-apa, 
+                <a href="$(link-redirect)" target="hotspot_advert" style="color:var(--primary);">klik disini</a>
+            </p>
+            
+            <div class="spinner" style="margin-top:var(--space-5);border-top-color:var(--accent-yellow);"></div>
+        </div>
+        
+        <footer class="footer" style="margin-top:var(--space-6);">
+            <p>&copy; 2026 ERVITA.NET - Internet Cepat & Stabil</p>
+        </footer>
+    </div>
+    
+</body>
+</html>

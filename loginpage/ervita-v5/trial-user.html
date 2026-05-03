@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="msapplication-navbutton-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Login Gratis - ERVITA.NET</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%90%3C/text%3E%3C/svg%3E">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        .countdown-container {
+            text-align: center;
+            padding: var(--space-6) 0;
+        }
+        .countdown-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: conic-gradient(var(--primary) var(--progress, 0%), var(--border) 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-4);
+            position: relative;
+        }
+        .countdown-circle::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: var(--bg-card);
+            border-radius: 50%;
+        }
+        .countdown-number {
+            position: relative;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .trial-btn {
+            display: none;
+        }
+        .trial-btn.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        .countdown-container.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                        <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                        <line x1="12" y1="20" x2="12.01" y2="20"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>ERVITA.NET</h1>
+                    <span>Login Gratis</span>
+                </div>
+            </div>
+            <a href="login.html" class="icon-btn" style="text-decoration:none;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </a>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <div class="card animate-fadeIn">
+                <div class="card-header">
+                    <div style="width:72px;height:72px;background:rgba(16,185,129,0.1);border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-4);color:var(--accent-green);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 12 20 22 4 22 4 12"/>
+                            <rect x="2" y="7" width="20" height="5"/>
+                            <line x1="12" y1="22" x2="12" y2="7"/>
+                            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+                            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+                        </svg>
+                    </div>
+                    <h2>Login Gratis</h2>
+                    <p>Nikmati internet gratis selama 5 menit</p>
+                </div>
+                
+                <!-- Countdown Section -->
+                <div class="countdown-container" id="countdown-section">
+                    <p style="color:var(--text-secondary);margin-bottom:var(--space-3);">Harap tunggu...</p>
+                    <div class="countdown-circle" id="countdown-circle">
+                        <span class="countdown-number" id="countdown-number">10</span>
+                    </div>
+                    <p style="font-size:0.85rem;color:var(--text-muted);">Mohon tunggu sebentar</p>
+                </div>
+                
+                <!-- Trial Button Section -->
+                <div class="trial-btn" id="trial-btn-section">
+                    <span class="hilang">$(if trial == 'yes')</span>
+                    <div class="alert alert-success" style="margin-bottom:var(--space-4);">
+                        <svg class="alert-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                        <div class="alert-content">Selamat! Anda mendapatkan akses gratis 5 menit</div>
+                    </div>
+                    <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class="btn btn-primary btn-block btn-lg">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                            <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                            <line x1="12" y1="20" x2="12.01" y2="20"/>
+                        </svg>
+                        Mulai Internet Gratis
+                    </a>
+                    <span class="hilang">$(else)</span>
+                    <div class="alert alert-warning" style="margin-bottom:var(--space-4);">
+                        <svg class="alert-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                            <line x1="12" y1="9" x2="12" y2="13"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <div class="alert-content">Maaf, trial hari ini sudah habis</div>
+                    </div>
+                    <a href="voucher.html" class="btn btn-primary btn-block btn-lg">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"/>
+                            <circle cx="20" cy="21" r="1"/>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                        </svg>
+                        Beli Voucher
+                    </a>
+                    <span class="hilang">$(endif)</span>
+                </div>
+            </div>
+            
+            <!-- Info Card -->
+            <div class="card animate-fadeInUp" style="animation-delay:0.1s;">
+                <div class="alert alert-info" style="margin-bottom:0;">
+                    <svg class="alert-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                    <div class="alert-content">
+                        <strong>Catatan:</strong> Akses gratis terbatas 5 menit per hari. Untuk akses tanpa batas, silakan <a href="voucher.html" style="color:var(--primary);">beli voucher</a>.
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 ERVITA.NET - Internet Cepat & Stabil</p>
+        </footer>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+        // Countdown
+        let seconds = 10;
+        const countdownNumber = document.getElementById('countdown-number');
+        const countdownCircle = document.getElementById('countdown-circle');
+        const countdownSection = document.getElementById('countdown-section');
+        const trialBtnSection = document.getElementById('trial-btn-section');
+        
+        function updateCountdown() {
+            countdownNumber.textContent = seconds;
+            const progress = ((10 - seconds) / 10) * 100;
+            countdownCircle.style.setProperty('--progress', progress + '%');
+            
+            if (seconds <= 0) {
+                countdownSection.classList.add('hidden');
+                trialBtnSection.classList.add('active');
+            } else {
+                seconds--;
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+        
+        updateCountdown();
+    </script>
+    
+</body>
+</html>

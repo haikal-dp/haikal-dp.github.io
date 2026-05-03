@@ -1,0 +1,22 @@
+$(if http-status == 302)Hotspot login required$(endif)
+$(if http-header == "Location")$(link-redirect)$(endif)
+<!doctype html>
+<html lang="id">
+<head>
+    <title>EVRVITA.NET</title>
+    <meta http-equiv="refresh" content="0; url=$(link-redirect)">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="main-card" style="text-align:center;padding:40px 24px">
+            <img src="img/logo.png" alt="EVRVITA.NET" class="logo" style="margin:0 auto 16px;display:block" />
+            <div class="brand-title">EVRVITA<span>.NET</span></div>
+            <p class="info-text" style="margin-top:12px">Redirecting...</p>
+        </div>
+    </div>
+</body>
+</html>

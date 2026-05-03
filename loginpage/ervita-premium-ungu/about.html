@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="ERVITA.NET">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="msapplication-navbutton-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" href="img/favicon.png">
+    <title>Tentang Kami - ERVITA.NET</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/ervita.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h1>ERVITA.NET</h1>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- About Card -->
+            <div class="about-card animate-fadeIn">
+                <div class="about-header">
+                    <span style="position: absolute; top: 15px; left: 15px; background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">OWNER</span>
+                    <img src="img/author.jpg" alt="ERVITA.NET" class="about-avatar" onerror="this.src='https://ui-avatars.com/api/?name=ERVITA&background=fff&color=6366f1&size=300'">
+                    <h3>ERVITA.NET</h3>
+                    <p>Internet Service Provider</p>
+                </div>
+                <div class="about-body">
+                    <p>
+                        Kami menyediakan berbagai macam pilihan <strong>Paket Internet Murah</strong> yang dapat Anda pilih sesuai dengan kebutuhan. Untuk melakukan pembelian <strong>Voucher WiFi</strong>, silakan hubungi kami melalui kontak yang tersedia.
+                    </p>
+                    
+                    <div style="display: grid; gap: 0.75rem; margin-top: 1.5rem;">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i>
+                            <span>Indonesia</span>
+                        </div>
+                        <a href="https://wa.me/6285172207018" target="_blank" style="text-decoration: none;">
+                            <div class="contact-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>085172207018</span>
+                            </div>
+                        </a>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope" style="color: var(--primary);"></i>
+                            <span>support@ervita.net</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Card -->
+            <div class="card animate-fadeInUp">
+                <div class="card-header">
+                    <h3><i class="fas fa-star" style="color: var(--warning); margin-right: 8px;"></i>Keunggulan Kami</h3>
+                </div>
+                <div style="display: grid; gap: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 12px;">
+                        <div style="width: 48px; height: 48px; background: var(--success-light); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-bolt" style="color: var(--success); font-size: 1.25rem;"></i>
+                        </div>
+                        <div>
+                            <h5 style="font-weight: 600; color: var(--dark);">Internet Cepat</h5>
+                            <p style="font-size: 0.8rem; color: var(--gray-500);">Kecepatan hingga 300 Mbps</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 12px;">
+                        <div style="width: 48px; height: 48px; background: var(--info-light); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-shield-alt" style="color: var(--info); font-size: 1.25rem;"></i>
+                        </div>
+                        <div>
+                            <h5 style="font-weight: 600; color: var(--dark);">Koneksi Aman</h5>
+                            <p style="font-size: 0.8rem; color: var(--gray-500);">Jaringan terenkripsi dan aman</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 12px;">
+                        <div style="width: 48px; height: 48px; background: var(--warning-light); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-headset" style="color: var(--warning); font-size: 1.25rem;"></i>
+                        </div>
+                        <div>
+                            <h5 style="font-weight: 600; color: var(--dark);">Support 24/7</h5>
+                            <p style="font-size: 0.8rem; color: var(--gray-500);">Siap membantu kapan saja</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 ERVITA.NET - Internet Cepat & Stabil</p>
+        </footer>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="login.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="aktivasi.html" class="nav-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Aktivasi</span>
+        </a>
+        <a href="about.html" class="nav-item active">
+            <i class="fas fa-user"></i>
+            <span>About</span>
+        </a>
+    </nav>
+</body>
+</html>

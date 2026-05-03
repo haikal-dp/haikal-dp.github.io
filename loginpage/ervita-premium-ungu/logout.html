@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="ERVITA.NET">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="msapplication-navbutton-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" href="img/favicon.png">
+    <title>Logout - ERVITA.NET</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/ervita.css">
+    <script>
+        function openLogin() {
+            if (window.name != 'hotspot_logout') return true;
+            open('$(link-login)', '_blank', '');
+            window.close();
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <div class="result-page">
+        <div class="result-card animate-scaleIn">
+            <div class="result-icon success">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2>Terima Kasih!</h2>
+            <p>Anda telah berhasil logout dari jaringan ERVITA.NET.<br><br>Telah menggunakan layanan internet kami. Silakan klik tombol di bawah untuk login kembali.</p>
+            
+            <form action="$(link-login)" name="login" onSubmit="return openLogin()">
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-arrow-circle-left"></i> Kembali Login
+                </button>
+            </form>
+            
+            <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--gray-200);">
+                <a href="login.html" style="color: var(--primary); text-decoration: none; font-size: 0.875rem;">
+                    <i class="fas fa-home"></i> Ke Halaman Utama
+                </a>
+            </div>
+        </div>
+        
+        <footer class="footer" style="margin-top: 2rem;">
+            <p>&copy; 2026 ERVITA.NET - Internet Cepat & Stabil</p>
+        </footer>
+    </div>
+</body>
+</html>

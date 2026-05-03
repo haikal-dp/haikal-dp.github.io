@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="id">
+<head>
+    $(if refresh-timeout)
+    <meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+    $(endif)
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>EVRVITA.NET - Status</title>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+        $(if advert-pending == 'yes')
+        var popup = '';
+        function focusAdvert() {
+            if (window.focus) popup.focus();
+        }
+        function openAdvert() {
+            popup = open('$(link-advert)', 'hotspot_advert', '');
+            setTimeout("focusAdvert()", 1000);
+        }
+        $(endif)
+        function openLogout() {
+            if (window.name != 'hotspot_status') return true;
+            open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+            window.close();
+            return false;
+        }
+    </script>
+</head>
+<body $(if advert-pending == 'yes') onLoad="openAdvert()" $(endif)>
+    <div class="container">
+        <div class="main-card">
+            <div class="header">
+                <img src="img/logo.png" alt="EVRVITA.NET" class="logo" />
+                <div class="brand-title">EVRVITA<span>.NET</span></div>
+                <div class="brand-subtitle">Status Koneksi</div>
+            </div>
+            <div style="padding: 0 24px 24px;">
+                $(if login-by == 'trial')
+                    <div class="panel-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Selamat datang, Trial User!
+                    </div>
+                $(elif login-by != 'mac')
+                    <div class="panel-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Hi, $(username)!
+                    </div>
+                $(endif)
+
+                <table class="status-table">
+                    <tr><td>IP Address</td><td>$(ip)</td></tr>
+                    <tr><td>Bytes up / down</td><td>$(bytes-in-nice) / $(bytes-out-nice)</td></tr>
+                    $(if session-time-left)
+                        <tr><td>Connected / left</td><td>$(uptime) / $(session-time-left)</td></tr>
+                    $(else)
+                        <tr><td>Connected</td><td>$(uptime)</td></tr>
+                    $(endif)
+                    $(if blocked == 'yes')
+                        <tr><td>Status</td><td><a href="$(link-advert)" target="hotspot_advert">Advertisement required</a></td></tr>
+                    $(elif refresh-timeout)
+                        <tr><td>Status refresh</td><td>$(refresh-timeout)</td></tr>
+                    $(endif)
+                </table>
+
+                $(if login-by-mac != 'yes')
+                <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+                    <input type="submit" class="btn btn-primary" value="Log out" />
+                </form>
+                $(endif)
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-brand">ERVITA.NET</div>
+            <div class="footer-info">Pasar Rau<br/><a href="https://wa.me/6285172207018">WhatsApp: 085172207018</a></div>
+        </div>
+    </div>
+</body>
+</html>

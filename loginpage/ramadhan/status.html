@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="Author" content="ERVITA.NET">
+    <meta name="theme-color" content="#064e3b">
+    <meta name="msapplication-navbutton-color" content="#064e3b">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#064e3b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Status Koneksi ERVITA.NET - Informasi koneksi internet Anda">
+    <link rel="icon" href="img/favicon.png">
+    <span class="hilang">$(if refresh-timeout)</span>
+    <meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+    <span class="hilang">$(endif)</span>
+    <title>Status - ERVITA.NET | Ramadhan Mubarak</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Ramadhan Theme CSS -->
+    <link rel="stylesheet" href="css/ramadhan.css">
+    
+    <script>
+        function openLogout() {
+            if (window.name != 'hotspot_status') return true;
+            open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=320,height=300');
+            window.close();
+            return false;
+        }
+    </script>
+</head>
+<body>
+    
+    <!-- Ornament Background -->
+    <div class="ornament-bg">
+        <svg class="ornament-moon" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 10C51.4 10 10 51.4 10 100C10 148.6 51.4 190 100 190C106.5 190 112.8 189.2 118.8 187.7C81.2 179.5 52.5 146.8 52.5 107.5C52.5 63.5 87.5 27.5 131.5 27.5C138.5 27.5 145.3 28.5 151.8 30.3C137.5 17.5 119.5 10 100 10Z" fill="white"/>
+            <circle cx="80" cy="70" r="8" fill="white" opacity="0.3"/>
+            <circle cx="120" cy="100" r="5" fill="white" opacity="0.2"/>
+            <circle cx="90" cy="130" r="6" fill="white" opacity="0.25"/>
+        </svg>
+        <svg class="ornament-lantern" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60 0L70 20H50L60 0Z" fill="white"/>
+            <rect x="45" y="20" width="30" height="10" rx="2" fill="white"/>
+            <path d="M30 30H90L100 50H20L30 30Z" fill="white"/>
+            <rect x="25" y="50" width="70" height="80" rx="5" fill="white"/>
+            <path d="M25 90H95" stroke="white" stroke-width="2" opacity="0.5"/>
+            <path d="M25 70H95" stroke="white" stroke-width="2" opacity="0.5"/>
+            <path d="M25 110H95" stroke="white" stroke-width="2" opacity="0.5"/>
+            <path d="M20 130H100L90 150H30L20 130Z" fill="white"/>
+            <rect x="45" y="150" width="30" height="10" rx="2" fill="white"/>
+            <path d="M60 160L60 180" stroke="white" stroke-width="2"/>
+            <circle cx="60" cy="90" r="15" fill="white" opacity="0.3"/>
+        </svg>
+        <div class="ornament-pattern"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Ramadhan Header -->
+        <header class="ramadhan-header" style="padding: var(--space-5) var(--space-5) var(--space-6);">
+            <div class="header-icon" style="width: 60px; height: 60px;">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M70 15C55 15 42.5 27.5 42.5 42.5C42.5 57.5 55 70 70 70C72.5 70 75 69.5 77.2 68.8C65.5 65.8 56.5 55.2 56.5 42.5C56.5 28.5 67.5 16.5 81.5 16.5C83.2 16.5 84.8 16.7 86.3 17C82 12.5 76.2 10 70 15Z" fill="#fbbf24"/>
+                    <circle cx="25" cy="25" r="2" fill="white" opacity="0.8"/>
+                    <circle cx="85" cy="35" r="1.5" fill="white" opacity="0.6"/>
+                    <ellipse cx="35" cy="55" rx="20" ry="15" fill="url(#domeGradient8)"/>
+                    <defs>
+                        <linearGradient id="domeGradient8" x1="35" y1="40" x2="35" y2="70">
+                            <stop offset="0%" stop-color="#10b981"/>
+                            <stop offset="100%" stop-color="#059669"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x="15" y="65" width="40" height="25" rx="2" fill="#10b981"/>
+                    <rect x="10" y="50" width="6" height="40" rx="1" fill="#059669"/>
+                    <circle cx="13" cy="48" r="4" fill="#10b981"/>
+                    <rect x="54" y="50" width="6" height="40" rx="1" fill="#059669"/>
+                    <circle cx="57" cy="48" r="4" fill="#10b981"/>
+                    <path d="M30 90V75C30 70 40 70 40 75V90H30Z" fill="#047857"/>
+                    <rect x="18" y="72" width="6" height="8" rx="1" fill="#047857"/>
+                    <rect x="46" y="72" width="6" height="8" rx="1" fill="#047857"/>
+                </svg>
+            </div>
+            <h1 class="ramadhan-title" style="font-size: 1.3rem;" id="WelcomeMessage">Selamat Datang</h1>
+            <p class="ramadhan-subtitle">Status koneksi internet Anda</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- User Profile Card -->
+            <div class="login-card animate-fadeIn" style="padding: 0; overflow: hidden;">
+                <div style="background: var(--primary-gradient); padding: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+                    <img src="img/author.jpg" alt="User" style="width: 64px; height: 64px; border-radius: 50%; border: 3px solid white; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" onerror="this.src='https://ui-avatars.com/api/?name=$(username)&background=10b981&color=fff&size=100'">
+                    <div>
+                        <h4 style="color: white; font-size: 1.1rem;">$(username)</h4>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 0.875rem;"><i class="fas fa-circle" style="color: #4ade80; font-size: 8px; margin-right: 5px;"></i> Online</p>
+                    </div>
+                </div>
+                <div style="padding: 1.5rem;">
+                    <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+                        <input type="hidden" name="erase-cookie" value="on">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Connection Status Card -->
+            <div class="login-card animate-fadeInUp">
+                <h3 style="margin-bottom: 1rem; color: var(--dark); font-size: 1rem;">
+                    <i class="fas fa-chart-bar" style="color: var(--primary); margin-right: 8px;"></i>
+                    Status Koneksi
+                </h3>
+                
+                <div style="display: grid; gap: 0.75rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--gray-100);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-500); font-size: 0.875rem;">
+                            <i class="fas fa-clock" style="color: var(--primary); width: 20px;"></i> Uptime
+                        </div>
+                        <div style="font-weight: 600; color: var(--dark); font-size: 0.875rem;">$(uptime)</div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--gray-100);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-500); font-size: 0.875rem;">
+                            <i class="fas fa-network-wired" style="color: var(--primary); width: 20px;"></i> IP Address
+                        </div>
+                        <div style="font-weight: 600; color: var(--dark); font-size: 0.875rem;">$(ip)</div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--gray-100);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-500); font-size: 0.875rem;">
+                            <i class="fas fa-fingerprint" style="color: var(--primary); width: 20px;"></i> MAC Address
+                        </div>
+                        <div style="font-weight: 600; color: var(--dark); font-size: 0.875rem;">$(mac)</div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--gray-100);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-500); font-size: 0.875rem;">
+                            <i class="fas fa-arrow-up" style="color: var(--success); width: 20px;"></i> Upload
+                        </div>
+                        <div style="font-weight: 600; color: var(--dark); font-size: 0.875rem;">$(bytes-in-nice)</div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--gray-100);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-500); font-size: 0.875rem;">
+                            <i class="fas fa-arrow-down" style="color: var(--info); width: 20px;"></i> Download
+                        </div>
+                        <div style="font-weight: 600; color: var(--dark); font-size: 0.875rem;">$(bytes-out-nice)</div>
+                    </div>
+                    
+                    <span class="hilang">$(if remain-bytes-total)</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--gray-100);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-500); font-size: 0.875rem;">
+                            <i class="fas fa-battery-half" style="color: var(--warning); width: 20px;"></i> Sisa Kuota
+                        </div>
+                        <div style="font-weight: 600; color: var(--dark); font-size: 0.875rem;">$(remain-bytes-total-nice)</div>
+                    </div>
+                    <span class="hilang">$(endif)</span>
+                    
+                    <span class="hilang">$(if blocked == 'yes')</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--gray-100);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-500); font-size: 0.875rem;">
+                            <i class="fas fa-exclamation-triangle" style="color: var(--danger); width: 20px;"></i> Status
+                        </div>
+                        <div style="font-weight: 600; font-size: 0.875rem;">
+                            <a href="$(link-advert)" target="hotspot_advert" style="color: var(--danger);">Iklan Diperlukan</a>
+                        </div>
+                    </div>
+                    <span class="hilang">$(elif refresh-timeout)</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--gray-100);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-500); font-size: 0.875rem;">
+                            <i class="fas fa-refresh" style="color: var(--primary); width: 20px;"></i> Refresh
+                        </div>
+                        <div style="font-weight: 600; color: var(--dark); font-size: 0.875rem;">$(refresh-timeout)</div>
+                    </div>
+                    <span class="hilang">$(endif)</span>
+                    
+                    <span class="hilang">$(if session-time-left)</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-500); font-size: 0.875rem;">
+                            <i class="fas fa-hourglass-half" style="color: var(--primary); width: 20px;"></i> Sisa Waktu
+                        </div>
+                        <div style="font-weight: 600; color: var(--dark); font-size: 0.875rem;" id="SisaWaktu">$(session-time-left)</div>
+                    </div>
+                    <span class="hilang">$(endif)</span>
+                </div>
+            </div>
+
+            <!-- Info Card -->
+            <div class="login-card animate-fadeInUp" style="animation-delay: 0.2s;">
+                <div class="alert alert-info" style="margin-bottom: 0;">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>Tips:</strong> Jangan lupa logout saat selesai menggunakan internet untuk menghemat kuota voucher Anda.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quote Section -->
+            <div class="quote-section">
+                <p class="quote-text">"Waktu itu lebih berharga daripada emas."</p>
+                <p class="quote-source">- Imam Al-Ghazali</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 <span class="hotspot-brand">ERVITA.NET</span></p>
+            <p>Internet Cepat & Stabil</p>
+        </footer>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="login.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="aktivasi.html" class="nav-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Aktivasi</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>About</span>
+        </a>
+    </nav>
+
+    <!-- Ramadhan Theme JavaScript -->
+    <script src="js/ramadhan.js"></script>
+    
+    <script>
+        // Welcome message based on time
+        const hour = new Date().getHours();
+        let message = '';
+        if (hour >= 5 && hour < 11) message = 'Selamat Pagi';
+        else if (hour >= 11 && hour < 15) message = 'Selamat Siang';
+        else if (hour >= 15 && hour < 18) message = 'Selamat Sore';
+        else message = 'Selamat Malam';
+        document.getElementById('WelcomeMessage').textContent = message;
+
+        // Format session time left
+        var time = "$(session-time-left)";
+        if (time) {
+            time = time.replace(/w/g, ' Minggu ').replace(/d/g, ' Hari ').replace(/h/g, ' Jam ').replace(/m/g, ' Menit ').replace(/s/g, ' Detik');
+            document.getElementById('SisaWaktu').textContent = time;
+        }
+    </script>
+</body>
+</html>

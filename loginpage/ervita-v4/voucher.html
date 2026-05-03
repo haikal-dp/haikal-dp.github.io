@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="Hotspot">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="msapplication-navbutton-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" href="img/favicon.png">
+    <title>Daftar Paket - Hotspot WiFi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/ervita.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h1 data-fill="brand-name">HOTSPOT</h1>
+            </div>
+            <a href="login.html" class="notification-btn" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-times"></i>
+            </a>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-title">
+                <h2><i class="fas fa-tags" style="margin-right: 8px;"></i>Daftar Paket Voucher</h2>
+                <p>Pilih paket yang sesuai dengan kebutuhan Anda</p>
+            </div>
+
+            <!-- Voucher Cards -->
+            <div id="voucher-list">
+                <!-- Voucher cards akan di-generate oleh setting.js -->
+            </div>
+
+            <!-- Info Card -->
+            <div class="card animate-fadeInUp">
+                <div class="alert alert-info" style="margin-bottom: 0;">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>Cara Pembelian:</strong> Klik tombol "Beli" dan hubungi kami via WhatsApp atau salin 085172207018 untuk melakukan pemesanan voucher.
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p data-fill="copyright">&copy; 2026 Hotspot WiFi</p>
+        </footer>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" id="bottom-nav"></nav>
+
+    <!-- Popup Modal -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup-box">
+            <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25d366; margin-bottom: 1rem;"></i>
+            <h3>Pembelian Voucher</h3>
+            <p>Silakan hubungi kami melalui WhatsApp untuk melakukan pembelian voucher.</p>
+            <a href="#" data-fill="whatsapp-link" target="_blank" class="btn btn-primary" style="margin-bottom: 0.5rem;">
+                <i class="fab fa-whatsapp"></i> Chat WhatsApp
+            </a>
+            <button class="btn btn-outline" onclick="closePopup()" style="width: 100%;">Tutup</button>
+        </div>
+    </div>
+
+    <script src="js/setting.js"></script>
+    <script>
+        function showPopup() {
+            document.getElementById('popup').classList.add('active');
+        }
+
+        function closePopup() {
+            document.getElementById('popup').classList.remove('active');
+        }
+
+        document.getElementById('popup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+    </script>
+</body>
+</html>

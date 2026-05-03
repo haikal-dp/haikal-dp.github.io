@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="ERVITA.NET">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="msapplication-navbutton-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="ERVITA.NET - Internet Cepat & Stabil. Login dengan voucher untuk mengakses internet. Paket mulai dari Rp 150.000/bulan.">
+    <link rel="icon" href="img/favicon.png">
+    <title>Login - ERVITA.NET | Internet Cepat & Stabil</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/ervita.css">
+</head>
+<body>
+    
+    <!-- MikroTik Hidden Form -->
+    <span class="hilang">$(if chap-id)</span>
+    <form name="sendin" action="$(link-login-only)" method="post">
+        <input type="hidden" name="username">
+        <input type="hidden" name="password">
+        <input type="hidden" name="dst" value="$(link-orig)">
+        <input type="hidden" name="popup" value="true">
+    </form>
+    <script src="md5.js"></script>
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+    </script>
+    <span class="hilang">$(endif)</span>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h1>ERVITA.NET</h1>
+            </div>
+            <button class="notification-btn" onclick="toggleDropdown()" aria-label="Notifikasi">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">1</span>
+            </button>
+        </header>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu" id="dropdownMenu">
+            <div class="dropdown-header">
+                <i class="fas fa-server"></i> Status Server
+            </div>
+            <div class="dropdown-content">
+                <div class="status-indicator status-online" id="statusServer">
+                    <span>Memeriksa...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- ============================================
+                 BANNER SLIDER - 3 Banner dengan Script Terpisah
+                 ============================================ -->
+            <div class="hero-banner animate-fadeIn" id="banner-container">
+                <!-- Banner akan di-generate oleh banner.js -->
+            </div>
+
+            <!-- ============================================
+                 PRICE LIST / DAFTAR HARGA PAKET INTERNET
+                 ============================================ -->
+            <div class="price-section">
+                <div class="price-section-title">
+                    <i class="fas fa-crown"></i>
+                    <span>Paket Internet Bulanan</span>
+                </div>
+                
+                <div class="price-grid">
+                    <!-- Paket 10 Mbps -->
+                    <div class="price-card">
+                        <div class="price-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="price-speed">10 Mbps</div>
+                        <div class="price-amount">Rp 150.000</div>
+                        <div class="price-label">/bulan</div>
+                    </div>
+                    
+                    <!-- Paket 20 Mbps - POPULAR -->
+                    <div class="price-card popular">
+                        <span class="price-badge">POPULER</span>
+                        <div class="price-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="price-speed">20 Mbps</div>
+                        <div class="price-amount">Rp 200.000</div>
+                        <div class="price-label">/bulan</div>
+                    </div>
+                    
+                    <!-- Paket 30 Mbps -->
+                    <div class="price-card">
+                        <div class="price-icon">
+                            <i class="fas fa-meteor"></i>
+                        </div>
+                        <div class="price-speed">30 Mbps</div>
+                        <div class="price-amount">Rp 350.000</div>
+                        <div class="price-label">/bulan</div>
+                    </div>
+                </div>
+                
+                <!-- ============================================
+                     PAKET COMBO + CCTV
+                     ============================================ -->
+                <div class="combo-section">
+                    <div class="combo-card">
+                        <div class="combo-header">
+                            <div class="combo-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="combo-title">
+                                <h4>Paket Combo Spesial!</h4>
+                                <p>Internet + CCTV Online dalam satu paket hemat</p>
+                            </div>
+                        </div>
+                        
+                        <div class="combo-features">
+                            <div class="combo-feature">
+                                <i class="fas fa-wifi"></i>
+                                <span>20 Mbps Unlimited</span>
+                            </div>
+                            <div class="combo-feature">
+                                <i class="fas fa-video"></i>
+                                <span>CCTV Online 24/7</span>
+                            </div>
+                            <div class="combo-feature">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Akses dari HP</span>
+                            </div>
+                            <div class="combo-feature">
+                                <i class="fas fa-cloud"></i>
+                                <span>Cloud Recording</span>
+                            </div>
+                        </div>
+                        
+                        <div class="combo-price">
+                            <span class="price-main">Rp 200.000</span>
+                            <span class="price-note">/bulan (harga normal)</span>
+                        </div>
+                        
+                        <div class="combo-installation">
+                            <i class="fas fa-tools"></i>
+                            <strong>Pemasangan Awal hanya Rp 450.000</strong><br>
+                            <small>Sudah termasuk instalasi internet & CCTV lengkap!</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 LOGIN CARD
+                 ============================================ -->
+            <div class="card animate-fadeInUp">
+                <div class="card-header">
+                    <h3><i class="fas fa-ticket-alt" style="color: var(--primary); margin-right: 8px;"></i>Masukkan Kode Voucher</h3>
+                    <p>Masukkan kode voucher untuk mengakses internet</p>
+                </div>
+                
+                <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()"$(endif)>
+                    <input type="hidden" name="dst" value="$(link-orig)">
+                    <input type="hidden" name="popup" value="true">
+                    
+                    <div class="input-group">
+                        <i class="fas fa-ticket"></i>
+                        <input type="text" name="username" id="user" placeholder="Kode Voucher" required autocomplete="off" autofocus>
+                    </div>
+                    <input type="hidden" name="password" id="pass">
+                    
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login</span>
+                    </button>
+                </form>
+
+                <!-- ============================================
+                     WARNING BOX - VOUCHER SUDAH DIGUNAKAN
+                     ============================================ -->
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div class="warning-content">
+                        <h5><i class="fas fa-info-circle"></i> Perhatian!</h5>
+                        <p>Jika voucher sudah digunakan, <strong>jangan coba-coba untuk menukar</strong>. Voucher bersifat sekali pakai dan tidak dapat digunakan kembali setelah login berhasil.</p>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <span class="hilang">$(if error)</span>
+                <div id="infoError" class="alert alert-danger" style="margin-top: 1rem;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="errorText"></span>
+                </div>
+                <script>
+                    var error = "$(error)";
+                    var errorMessages = {
+                        "user $(username) has reached uptime limit": "Masa Aktif Voucher anda sudah habis",
+                        "user $(username) has reached traffic limit": "Kuota Voucher anda sudah habis",
+                        "no valid profile found": "Profil tidak valid",
+                        "invalid username or password": "Kode voucher salah atau tidak terdaftar",
+                        "user <$(username)> not found": "Voucher Tidak Ditemukan",
+                        "simultaneous session limit reached": "Jumlah Session Login Telah Dibatasi",
+                        "no more sessions are allowed for user $(username)": "Voucher sedang digunakan di perangkat lain"
+                    };
+                    
+                    var errorText = errorMessages[error] || error;
+                    document.getElementById("errorText").textContent = errorText;
+                </script>
+                <span class="hilang">$(endif)</span>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="menu-grid">
+                <span class="hilang">$(if trial == 'yes')</span>
+                <a href="trial-user.html" class="menu-item gratis">
+                <span class="hilang">$(else)</span>
+                <a href="javascript:void(0)" onclick="showPopup('Maaf, login gratis kami nonaktifkan!')" class="menu-item gratis">
+                <span class="hilang">$(endif)</span>
+                    <div class="menu-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h6>Gratis</h6>
+                </a>
+
+                <a href="member.html" class="menu-item member">
+                    <div class="menu-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h6>Member</h6>
+                </a>
+
+                <a href="https://laksa19.github.io/myqr" class="menu-item qr" target="_blank">
+                    <div class="menu-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h6>QR Code</h6>
+                </a>
+
+                <a href="voucher.html" class="menu-item paket">
+                    <div class="menu-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h6>Paket</h6>
+                </a>
+
+                <a href="faq.html" class="menu-item bantuan">
+                    <div class="menu-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h6>Bantuan</h6>
+                </a>
+
+                <a href="https://wa.me/6285172207018" class="menu-item contact" target="_blank">
+                    <div class="menu-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h6>Contact</h6>
+                </a>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 ERVITA.NET - Internet Cepat & Stabil</p>
+            <p>Powered by MikroTik</p>
+        </footer>
+    </div>
+
+    <!-- ============================================
+         MUSIC PLAYER - Dengan Autoplay
+         ============================================ -->
+    <div class="music-player-container" id="music-player-container">
+        <!-- Music player akan di-generate oleh music.js -->
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="login.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="aktivasi.html" class="nav-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Aktivasi</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>About</span>
+        </a>
+    </nav>
+
+    <!-- Popup Modal -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup-box">
+            <i class="fas fa-info-circle" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+            <h3>Informasi</h3>
+            <p id="popupMessage">Message here</p>
+            <button class="btn btn-primary" onclick="closePopup()">Tutup</button>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
+    
+    <!-- Banner Slider Script (Terpisah) -->
+    <script src="js/banner.js"></script>
+    
+    <!-- Music Player Script (Terpisah) -->
+    <script src="js/music.js"></script>
+    
+    <!-- Main ERVITA Script -->
+    <script src="js/ervita.js"></script>
+    
+    <!-- Inline Scripts -->
+    <script>
+        // Dropdown toggle
+        function toggleDropdown() {
+            document.getElementById('dropdownMenu').classList.toggle('active');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const dropdown = document.getElementById('dropdownMenu');
+            const btn = document.querySelector('.notification-btn');
+            if (dropdown && btn && !dropdown.contains(e.target) && !btn.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Popup functions
+        function showPopup(message) {
+            const popupMessage = document.getElementById('popupMessage');
+            const popup = document.getElementById('popup');
+            if (popupMessage && popup) {
+                popupMessage.textContent = message;
+                popup.classList.add('active');
+            }
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            if (popup) {
+                popup.classList.remove('active');
+            }
+        }
+
+        // Password sync
+        document.addEventListener('DOMContentLoaded', function() {
+            const userInput = document.getElementById('user');
+            const passInput = document.getElementById('pass');
+            
+            if (userInput && passInput) {
+                userInput.addEventListener('input', function() {
+                    passInput.value = this.value;
+                });
+            }
+
+            // Server status check
+            function checkServerStatus() {
+                const statusElement = document.getElementById('statusServer');
+                if (!statusElement) return;
+                
+                const img = new Image();
+                img.onload = function() {
+                    statusElement.innerHTML = '<span>Terhubung</span>';
+                    statusElement.classList.add('status-online');
+                    statusElement.classList.remove('status-offline');
+                };
+                img.onerror = function() {
+                    statusElement.innerHTML = '<span>Offline</span>';
+                    statusElement.classList.remove('status-online');
+                    statusElement.classList.add('status-offline');
+                };
+                img.src = 'img/author.jpg?' + Date.now();
+            }
+            
+            checkServerStatus();
+
+            // Auto-hide error after 10 seconds
+            setTimeout(function() {
+                const errorEl = document.querySelector('.alert-danger');
+                if (errorEl) {
+                    errorEl.style.opacity = '0';
+                    errorEl.style.transform = 'translateY(-10px)';
+                    errorEl.style.transition = 'all 0.5s ease';
+                    setTimeout(() => errorEl.remove(), 500);
+                }
+            }, 10000);
+        });
+
+        // Close popup on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePopup();
+            }
+        });
+    </script>
+    
+</body>
+</html>

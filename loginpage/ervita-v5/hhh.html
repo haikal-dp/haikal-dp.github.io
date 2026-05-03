@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Music</title>
+    <style>
+        /* Style untuk music player (opsional, bisa disembunyikan) */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            font-family: Arial, sans-serif;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .music-player button {
+            background: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .music-player button:hover {
+            background: #45a049;
+        }
+        
+        .music-info {
+            font-size: 12px;
+        }
+        
+        .volume-slider {
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="assets/music/background.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung audio element.
+    </audio>
+
+    <!-- Music Player UI (bisa dihapus jika ingin hidden sepenuhnya) -->
+    <div class="music-player" id="musicPlayer">
+        <span class="music-info">🎵 Background Music</span>
+        <button id="toggleBtn" onclick="toggleMusic()">▶️ Play</button>
+        <input type="range" class="volume-slider" id="volumeSlider" 
+               min="0" max="1" step="0.1" value="0.5" 
+               onchange="setVolume(this.value)">
+    </div>
+
+    <script>
+        // Konfigurasi Musik
+        const musicConfig = {
+            enabled: true,
+            file: "assets/music/background.mp3",
+            autoPlay: true,
+            loop: true,
+            volume: 0.5,
+            title: "Background Music"
+        };
+
+        const audio = document.getElementById('bgMusic');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        // Inisialisasi
+        function initMusic() {
+            if (!musicConfig.enabled) {
+                document.getElementById('musicPlayer').style.display = 'none';
+                return;
+            }
+
+            // Set volume
+            audio.volume = musicConfig.volume;
+            volumeSlider.value = musicConfig.volume;
+
+            // Set loop
+            audio.loop = musicConfig.loop;
+
+            // Auto play (dengan handling autoplay policy browser)
+            if (musicConfig.autoPlay) {
+                playMusic();
+            }
+        }
+
+        // Play music dengan handling autoplay restriction
+        function playMusic() {
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    toggleBtn.textContent = '⏸️ Pause';
+                }).catch(error => {
+                    // Autoplay diblokir browser, tunggu user interaction
+                    console.log('Autoplay diblokir, klik Play untuk memulai');
+                    toggleBtn.textContent = '▶️ Play';
+                });
+            }
+        }
+
+        // Toggle play/pause
+        function toggleMusic() {
+            if (audio.paused) {
+                playMusic();
+            } else {
+                audio.pause();
+                toggleBtn.textContent = '▶️ Play';
+            }
+        }
+
+        // Set volume
+        function setVolume(value) {
+            audio.volume = parseFloat(value);
+        }
+
+        // Jalankan saat halaman dimuat
+        window.addEventListener('DOMContentLoaded', initMusic);
+
+        // Fallback: play setelah user interaction pertama (untuk bypass autoplay policy)
+        document.addEventListener('click', function handler() {
+            if (audio.paused && musicConfig.autoPlay) {
+                playMusic();
+            }
+            document.removeEventListener('click', handler);
+        }, { once: true });
+    </script>
+
+</body>
+</html>

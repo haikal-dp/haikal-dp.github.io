@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="ERVITA.NET">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="msapplication-navbutton-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" href="img/favicon.png">
+    <title>Login Member - ERVITA.NET</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/ervita.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h1>ERVITA.NET</h1>
+            </div>
+            <a href="login.html" class="notification-btn" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-times"></i>
+            </a>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="result-page" style="min-height: auto; padding: 0;">
+                <div class="result-card animate-scaleIn" style="max-width: 100%;">
+                    <div class="result-icon" style="background: var(--primary-light); color: var(--primary); width: 80px; height: 80px;">
+                        <i class="fas fa-users" style="font-size: 2.5rem;"></i>
+                    </div>
+                    <h2>Login Member</h2>
+                    <p>Masukkan username dan password member Anda</p>
+
+                    <!-- MikroTik Hidden Form -->
+                    <span class="hilang">$(if chap-id)</span>
+                    <form name="sendin" action="$(link-login-only)" method="post">
+                        <input type="hidden" name="username">
+                        <input type="hidden" name="password">
+                        <input type="hidden" name="dst" value="$(link-orig)">
+                        <input type="hidden" name="popup" value="true">
+                    </form>
+                    <script src="md5.js"></script>
+                    <script>
+                        function doLoginUSPW() {
+                            document.sendin.username.value = document.loginuspw.username.value;
+                            document.sendin.password.value = hexMD5('$(chap-id)' + document.loginuspw.password.value + '$(chap-challenge)');
+                            document.sendin.submit();
+                            return false;
+                        }
+                    </script>
+                    <span class="hilang">$(endif)</span>
+
+                    <form id="loginuspw" name="loginuspw" action="$(link-login-only)" method="post" autocomplete="off" $(if chap-id) onSubmit="return doLoginUSPW()" $(endif)>
+                        <input type="hidden" name="dst" value="$(link-orig)">
+                        <input type="hidden" name="popup" value="true">
+                        
+                        <div class="input-group" style="margin-bottom: 1rem;">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="username" id="username" placeholder="Username" required autocomplete="off">
+                        </div>
+                        
+                        <div class="input-group" style="margin-bottom: 1rem;">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" name="password" id="password" placeholder="Password" required>
+                        </div>
+                        
+                        <p style="text-align: center; margin-bottom: 1rem; font-size: 0.875rem;">
+                            Sudah punya voucher? <a href="login.html" style="color: var(--primary); font-weight: 600;">Login Disini</a>
+                        </p>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 ERVITA.NET - Internet Cepat & Stabil</p>
+        </footer>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="login.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="aktivasi.html" class="nav-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Aktivasi</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>About</span>
+        </a>
+    </nav>
+</body>
+</html>
