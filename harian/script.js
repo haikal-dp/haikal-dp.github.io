@@ -48,9 +48,9 @@ function renderVoucher(codes) {
         <div>10 jam</div>
         <div><b>UNLIMITED</b></div>
       </div>
-      <div class="v-cs">CS : 081294701977</div>
+      <div class="v-cs">WhatsApp : 085173229118</div>
       <div class="v-cs">Dicetak Pada: ${formattedDate}</div>
-            <div class="v-cs">Jika Segel Rusak Tidak boleh di tukar</div>
+            <div class="v-cs">Chat Kalau Mau Beli Voucher</div>
     `;
     voucherContainer.appendChild(div);
   });
